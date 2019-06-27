@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cpmip.dao.ComUserMapper" >
+  <resultMap id="BaseResultMap" type="com.cpmip.pojo.ComUser" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="company" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="ecotype" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="province" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="city" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="district" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="street" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="detailed" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="orgcode" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="busilicense" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="legaler" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="legaler_phone" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="contracter" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="contracter_phone" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="orgcode_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="question" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="answer" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="update_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, company, ecotype, name, province, city, district, street, detailed, orgcode, 
+    busilicense, legaler, legaler_phone, contracter, contracter_phone, orgcode_time, 
+    question, answer, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from cpmip_companyuser
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from cpmip_companyuser
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cpmip.pojo.ComUser" >
+    insert into cpmip_companyuser (id, company, ecotype, 
+      name, province, city, 
+      district, street, detailed, 
+      orgcode, busilicense, legaler, 
+      legaler_phone, contracter, contracter_phone, 
+      orgcode_time, question, answer, 
+      create_time, update_time)
+    values (#{id,jdbcType=INTEGER}, #{company,jdbcType=INTEGER}, #{ecotype,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, 
+      #{district,jdbcType=VARCHAR}, #{street,jdbcType=VARCHAR}, #{detailed,jdbcType=VARCHAR}, 
+      #{orgcode,jdbcType=VARCHAR}, #{busilicense,jdbcType=VARCHAR}, #{legaler,jdbcType=VARCHAR}, 
+      #{legalerPhone,jdbcType=VARCHAR}, #{contracter,jdbcType=VARCHAR}, #{contracterPhone,jdbcType=VARCHAR}, 
+      #{orgcodeTime,jdbcType=TIMESTAMP}, #{question,jdbcType=VARCHAR}, #{answer,jdbcType=VARCHAR}, 
+      now(), now())
+  </insert>
+  <insert id="insertSelective" parameterType="com.cpmip.pojo.ComUser" >
+    insert into cpmip_companyuser
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="company != null" >
+        company,
+      </if>
+      <if test="ecotype != null" >
+        ecotype,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="province != null" >
+        province,
+      </if>
+      <if test="city != null" >
+        city,
+      </if>
+      <if test="district != null" >
+        district,
+      </if>
+      <if test="street != null" >
+        street,
+      </if>
+      <if test="detailed != null" >
+        detailed,
+      </if>
+      <if test="orgcode != null" >
+        orgcode,
+      </if>
+      <if test="busilicense != null" >
+        busilicense,
+      </if>
+      <if test="legaler != null" >
+        legaler,
+      </if>
+      <if test="legalerPhone != null" >
+        legaler_phone,
+      </if>
+      <if test="contracter != null" >
+        contracter,
+      </if>
+      <if test="contracterPhone != null" >
+        contracter_phone,
+      </if>
+      <if test="orgcodeTime != null" >
+        orgcode_time,
+      </if>
+      <if test="question != null" >
+        question,
+      </if>
+      <if test="answer != null" >
+        answer,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="company != null" >
+        #{company,jdbcType=INTEGER},
+      </if>
+      <if test="ecotype != null" >
+        #{ecotype,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="district != null" >
+        #{district,jdbcType=VARCHAR},
+      </if>
+      <if test="street != null" >
+        #{street,jdbcType=VARCHAR},
+      </if>
+      <if test="detailed != null" >
+        #{detailed,jdbcType=VARCHAR},
+      </if>
+      <if test="orgcode != null" >
+        #{orgcode,jdbcType=VARCHAR},
+      </if>
+      <if test="busilicense != null" >
+        #{busilicense,jdbcType=VARCHAR},
+      </if>
+      <if test="legaler != null" >
+        #{legaler,jdbcType=VARCHAR},
+      </if>
+      <if test="legalerPhone != null" >
+        #{legalerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="contracter != null" >
+        #{contracter,jdbcType=VARCHAR},
+      </if>
+      <if test="contracterPhone != null" >
+        #{contracterPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="orgcodeTime != null" >
+        #{orgcodeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="question != null" >
+        #{question,jdbcType=VARCHAR},
+      </if>
+      <if test="answer != null" >
+        #{answer,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        now(),
+      </if>
+      <if test="updateTime != null" >
+        now(),
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cpmip.pojo.ComUser" >
+    update cpmip_companyuser
+    <set >
+      <if test="company != null" >
+        company = #{company,jdbcType=INTEGER},
+      </if>
+      <if test="ecotype != null" >
+        ecotype = #{ecotype,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="district != null" >
+        district = #{district,jdbcType=VARCHAR},
+      </if>
+      <if test="street != null" >
+        street = #{street,jdbcType=VARCHAR},
+      </if>
+      <if test="detailed != null" >
+        detailed = #{detailed,jdbcType=VARCHAR},
+      </if>
+      <if test="orgcode != null" >
+        orgcode = #{orgcode,jdbcType=VARCHAR},
+      </if>
+      <if test="busilicense != null" >
+        busilicense = #{busilicense,jdbcType=VARCHAR},
+      </if>
+      <if test="legaler != null" >
+        legaler = #{legaler,jdbcType=VARCHAR},
+      </if>
+      <if test="legalerPhone != null" >
+        legaler_phone = #{legalerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="contracter != null" >
+        contracter = #{contracter,jdbcType=VARCHAR},
+      </if>
+      <if test="contracterPhone != null" >
+        contracter_phone = #{contracterPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="orgcodeTime != null" >
+        orgcode_time = #{orgcodeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="question != null" >
+        question = #{question,jdbcType=VARCHAR},
+      </if>
+      <if test="answer != null" >
+        answer = #{answer,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = now(),
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cpmip.pojo.ComUser" >
+    update cpmip_companyuser
+    set company = #{company,jdbcType=INTEGER},
+      ecotype = #{ecotype,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      province = #{province,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      district = #{district,jdbcType=VARCHAR},
+      street = #{street,jdbcType=VARCHAR},
+      detailed = #{detailed,jdbcType=VARCHAR},
+      orgcode = #{orgcode,jdbcType=VARCHAR},
+      busilicense = #{busilicense,jdbcType=VARCHAR},
+      legaler = #{legaler,jdbcType=VARCHAR},
+      legaler_phone = #{legalerPhone,jdbcType=VARCHAR},
+      contracter = #{contracter,jdbcType=VARCHAR},
+      contracter_phone = #{contracterPhone,jdbcType=VARCHAR},
+      orgcode_time = #{orgcodeTime,jdbcType=TIMESTAMP},
+      question = #{question,jdbcType=VARCHAR},
+      answer = #{answer,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = now()
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

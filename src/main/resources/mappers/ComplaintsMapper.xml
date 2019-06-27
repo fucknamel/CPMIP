@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cpmip.dao.ComplaintsMapper" >
+  <resultMap id="BaseResultMap" type="com.cpmip.pojo.Complaints" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="complaints_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="construname" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="position" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="buildname" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="construction" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="reason" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="complaints_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="feedback" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="record" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="deal" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="examine" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="down" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="update_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, complaints_id, construname, position, buildname, construction, reason, complaints_time, 
+    feedback, record, deal, examine, down, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from cpmip_complaints
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from cpmip_complaints
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cpmip.pojo.Complaints" >
+    insert into cpmip_complaints (id, complaints_id, construname, 
+      position, buildname, construction, 
+      reason, complaints_time, feedback, 
+      record, deal, examine, 
+      down, create_time, update_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{complaintsId,jdbcType=VARCHAR}, #{construname,jdbcType=VARCHAR}, 
+      #{position,jdbcType=VARCHAR}, #{buildname,jdbcType=VARCHAR}, #{construction,jdbcType=VARCHAR}, 
+      #{reason,jdbcType=VARCHAR}, #{complaintsTime,jdbcType=TIMESTAMP}, #{feedback,jdbcType=VARCHAR}, 
+      #{record,jdbcType=VARCHAR}, #{deal,jdbcType=INTEGER}, #{examine,jdbcType=INTEGER}, 
+      #{down,jdbcType=INTEGER}, now(), now()
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.cpmip.pojo.Complaints" >
+    insert into cpmip_complaints
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="complaintsId != null" >
+        complaints_id,
+      </if>
+      <if test="construname != null" >
+        construname,
+      </if>
+      <if test="position != null" >
+        position,
+      </if>
+      <if test="buildname != null" >
+        buildname,
+      </if>
+      <if test="construction != null" >
+        construction,
+      </if>
+      <if test="reason != null" >
+        reason,
+      </if>
+      <if test="complaintsTime != null" >
+        complaints_time,
+      </if>
+      <if test="feedback != null" >
+        feedback,
+      </if>
+      <if test="record != null" >
+        record,
+      </if>
+      <if test="deal != null" >
+        deal,
+      </if>
+      <if test="examine != null" >
+        examine,
+      </if>
+      <if test="down != null" >
+        down,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="complaintsId != null" >
+        #{complaintsId,jdbcType=VARCHAR},
+      </if>
+      <if test="construname != null" >
+        #{construname,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null" >
+        #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="buildname != null" >
+        #{buildname,jdbcType=VARCHAR},
+      </if>
+      <if test="construction != null" >
+        #{construction,jdbcType=VARCHAR},
+      </if>
+      <if test="reason != null" >
+        #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintsTime != null" >
+        #{complaintsTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="feedback != null" >
+        #{feedback,jdbcType=VARCHAR},
+      </if>
+      <if test="record != null" >
+        #{record,jdbcType=VARCHAR},
+      </if>
+      <if test="deal != null" >
+        #{deal,jdbcType=INTEGER},
+      </if>
+      <if test="examine != null" >
+        #{examine,jdbcType=INTEGER},
+      </if>
+      <if test="down != null" >
+        #{down,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        now(),
+      </if>
+      <if test="updateTime != null" >
+        now(),
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cpmip.pojo.Complaints" >
+    update cpmip_complaints
+    <set >
+      <if test="complaintsId != null" >
+        complaints_id = #{complaintsId,jdbcType=VARCHAR},
+      </if>
+      <if test="construname != null" >
+        construname = #{construname,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null" >
+        position = #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="buildname != null" >
+        buildname = #{buildname,jdbcType=VARCHAR},
+      </if>
+      <if test="construction != null" >
+        construction = #{construction,jdbcType=VARCHAR},
+      </if>
+      <if test="reason != null" >
+        reason = #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintsTime != null" >
+        complaints_time = #{complaintsTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="feedback != null" >
+        feedback = #{feedback,jdbcType=VARCHAR},
+      </if>
+      <if test="record != null" >
+        record = #{record,jdbcType=VARCHAR},
+      </if>
+      <if test="deal != null" >
+        deal = #{deal,jdbcType=INTEGER},
+      </if>
+      <if test="examine != null" >
+        examine = #{examine,jdbcType=INTEGER},
+      </if>
+      <if test="down != null" >
+        down = #{down,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = now(),
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cpmip.pojo.Complaints" >
+    update cpmip_complaints
+    set complaints_id = #{complaintsId,jdbcType=VARCHAR},
+      construname = #{construname,jdbcType=VARCHAR},
+      position = #{position,jdbcType=VARCHAR},
+      buildname = #{buildname,jdbcType=VARCHAR},
+      construction = #{construction,jdbcType=VARCHAR},
+      reason = #{reason,jdbcType=VARCHAR},
+      complaints_time = #{complaintsTime,jdbcType=TIMESTAMP},
+      feedback = #{feedback,jdbcType=VARCHAR},
+      record = #{record,jdbcType=VARCHAR},
+      deal = #{deal,jdbcType=INTEGER},
+      examine = #{examine,jdbcType=INTEGER},
+      down = #{down,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = now()
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cpmip.dao.StartMapper" >
+  <resultMap id="BaseResultMap" type="com.cpmip.pojo.Start" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="start_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="construname" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="position" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="area" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="type" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="money" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="start_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="final_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="builder" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="buildername" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="builder_phone" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="construction" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="constructioner" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="constructioner_phone" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="submit_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="update_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, start_id, construname, position, area, type, money, start_time, final_time, builder, 
+    buildername, builder_phone, construction, constructioner, constructioner_phone, submit_time, 
+    create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from cpmip_start
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from cpmip_start
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cpmip.pojo.Start" >
+    insert into cpmip_start (id, start_id, construname, 
+      position, area, type, 
+      money, start_time, final_time, 
+      builder, buildername, builder_phone, 
+      construction, constructioner, constructioner_phone, 
+      submit_time, create_time, update_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{startId,jdbcType=INTEGER}, #{construname,jdbcType=VARCHAR}, 
+      #{position,jdbcType=VARCHAR}, #{area,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
+      #{money,jdbcType=DECIMAL}, #{startTime,jdbcType=TIMESTAMP}, #{finalTime,jdbcType=TIMESTAMP}, 
+      #{builder,jdbcType=VARCHAR}, #{buildername,jdbcType=VARCHAR}, #{builderPhone,jdbcType=VARCHAR}, 
+      #{construction,jdbcType=VARCHAR}, #{constructioner,jdbcType=VARCHAR}, #{constructionerPhone,jdbcType=VARCHAR}, 
+      #{submitTime,jdbcType=TIMESTAMP}, now(), now()
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.cpmip.pojo.Start" >
+    insert into cpmip_start
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="startId != null" >
+        start_id,
+      </if>
+      <if test="construname != null" >
+        construname,
+      </if>
+      <if test="position != null" >
+        position,
+      </if>
+      <if test="area != null" >
+        area,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="money != null" >
+        money,
+      </if>
+      <if test="startTime != null" >
+        start_time,
+      </if>
+      <if test="finalTime != null" >
+        final_time,
+      </if>
+      <if test="builder != null" >
+        builder,
+      </if>
+      <if test="buildername != null" >
+        buildername,
+      </if>
+      <if test="builderPhone != null" >
+        builder_phone,
+      </if>
+      <if test="construction != null" >
+        construction,
+      </if>
+      <if test="constructioner != null" >
+        constructioner,
+      </if>
+      <if test="constructionerPhone != null" >
+        constructioner_phone,
+      </if>
+      <if test="submitTime != null" >
+        submit_time,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="startId != null" >
+        #{startId,jdbcType=INTEGER},
+      </if>
+      <if test="construname != null" >
+        #{construname,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null" >
+        #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null" >
+        #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="startTime != null" >
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="finalTime != null" >
+        #{finalTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="builder != null" >
+        #{builder,jdbcType=VARCHAR},
+      </if>
+      <if test="buildername != null" >
+        #{buildername,jdbcType=VARCHAR},
+      </if>
+      <if test="builderPhone != null" >
+        #{builderPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="construction != null" >
+        #{construction,jdbcType=VARCHAR},
+      </if>
+      <if test="constructioner != null" >
+        #{constructioner,jdbcType=VARCHAR},
+      </if>
+      <if test="constructionerPhone != null" >
+        #{constructionerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="submitTime != null" >
+        #{submitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        now(),
+      </if>
+      <if test="updateTime != null" >
+        now(),
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cpmip.pojo.Start" >
+    update cpmip_start
+    <set >
+      <if test="startId != null" >
+        start_id = #{startId,jdbcType=INTEGER},
+      </if>
+      <if test="construname != null" >
+        construname = #{construname,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null" >
+        position = #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        area = #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null" >
+        money = #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="startTime != null" >
+        start_time = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="finalTime != null" >
+        final_time = #{finalTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="builder != null" >
+        builder = #{builder,jdbcType=VARCHAR},
+      </if>
+      <if test="buildername != null" >
+        buildername = #{buildername,jdbcType=VARCHAR},
+      </if>
+      <if test="builderPhone != null" >
+        builder_phone = #{builderPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="construction != null" >
+        construction = #{construction,jdbcType=VARCHAR},
+      </if>
+      <if test="constructioner != null" >
+        constructioner = #{constructioner,jdbcType=VARCHAR},
+      </if>
+      <if test="constructionerPhone != null" >
+        constructioner_phone = #{constructionerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="submitTime != null" >
+        submit_time = #{submitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = now(),
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cpmip.pojo.Start" >
+    update cpmip_start
+    set start_id = #{startId,jdbcType=INTEGER},
+      construname = #{construname,jdbcType=VARCHAR},
+      position = #{position,jdbcType=VARCHAR},
+      area = #{area,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      money = #{money,jdbcType=DECIMAL},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      final_time = #{finalTime,jdbcType=TIMESTAMP},
+      builder = #{builder,jdbcType=VARCHAR},
+      buildername = #{buildername,jdbcType=VARCHAR},
+      builder_phone = #{builderPhone,jdbcType=VARCHAR},
+      construction = #{construction,jdbcType=VARCHAR},
+      constructioner = #{constructioner,jdbcType=VARCHAR},
+      constructioner_phone = #{constructionerPhone,jdbcType=VARCHAR},
+      submit_time = #{submitTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = now()
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

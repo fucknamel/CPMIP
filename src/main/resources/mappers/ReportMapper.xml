@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cpmip.dao.ReportMapper" >
+  <resultMap id="BaseResultMap" type="com.cpmip.pojo.Report" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="report_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="construname" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="position" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="money" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="area" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="report_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="buildname" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="builder" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="builder_phone" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="construction" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="constructioner" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="constructioner_phone" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="qsadname" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="qsader" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="qsader_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="standard1" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="standard2" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="standard3" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="update_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, report_id, construname, position, money, area, report_time, buildname, builder, 
+    builder_phone, construction, constructioner, constructioner_phone, qsadname, qsader, 
+    qsader_name, standard1, standard2, standard3, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from cpmip_report
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from cpmip_report
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cpmip.pojo.Report" >
+    insert into cpmip_report (id, report_id, construname, 
+      position, money, area, 
+      report_time, buildname, builder, 
+      builder_phone, construction, constructioner, 
+      constructioner_phone, qsadname, qsader, 
+      qsader_name, standard1, standard2, 
+      standard3, create_time, update_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{reportId,jdbcType=VARCHAR}, #{construname,jdbcType=VARCHAR}, 
+      #{position,jdbcType=VARCHAR}, #{money,jdbcType=DECIMAL}, #{area,jdbcType=VARCHAR}, 
+      #{reportTime,jdbcType=TIMESTAMP}, #{buildname,jdbcType=VARCHAR}, #{builder,jdbcType=VARCHAR}, 
+      #{builderPhone,jdbcType=VARCHAR}, #{construction,jdbcType=VARCHAR}, #{constructioner,jdbcType=VARCHAR}, 
+      #{constructionerPhone,jdbcType=VARCHAR}, #{qsadname,jdbcType=VARCHAR}, #{qsader,jdbcType=VARCHAR}, 
+      #{qsaderName,jdbcType=VARCHAR}, #{standard1,jdbcType=VARCHAR}, #{standard2,jdbcType=VARCHAR}, 
+      #{standard3,jdbcType=VARCHAR}, now(), now()
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.cpmip.pojo.Report" >
+    insert into cpmip_report
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="reportId != null" >
+        report_id,
+      </if>
+      <if test="construname != null" >
+        construname,
+      </if>
+      <if test="position != null" >
+        position,
+      </if>
+      <if test="money != null" >
+        money,
+      </if>
+      <if test="area != null" >
+        area,
+      </if>
+      <if test="reportTime != null" >
+        report_time,
+      </if>
+      <if test="buildname != null" >
+        buildname,
+      </if>
+      <if test="builder != null" >
+        builder,
+      </if>
+      <if test="builderPhone != null" >
+        builder_phone,
+      </if>
+      <if test="construction != null" >
+        construction,
+      </if>
+      <if test="constructioner != null" >
+        constructioner,
+      </if>
+      <if test="constructionerPhone != null" >
+        constructioner_phone,
+      </if>
+      <if test="qsadname != null" >
+        qsadname,
+      </if>
+      <if test="qsader != null" >
+        qsader,
+      </if>
+      <if test="qsaderName != null" >
+        qsader_name,
+      </if>
+      <if test="standard1 != null" >
+        standard1,
+      </if>
+      <if test="standard2 != null" >
+        standard2,
+      </if>
+      <if test="standard3 != null" >
+        standard3,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="reportId != null" >
+        #{reportId,jdbcType=VARCHAR},
+      </if>
+      <if test="construname != null" >
+        #{construname,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null" >
+        #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null" >
+        #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="area != null" >
+        #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="reportTime != null" >
+        #{reportTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="buildname != null" >
+        #{buildname,jdbcType=VARCHAR},
+      </if>
+      <if test="builder != null" >
+        #{builder,jdbcType=VARCHAR},
+      </if>
+      <if test="builderPhone != null" >
+        #{builderPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="construction != null" >
+        #{construction,jdbcType=VARCHAR},
+      </if>
+      <if test="constructioner != null" >
+        #{constructioner,jdbcType=VARCHAR},
+      </if>
+      <if test="constructionerPhone != null" >
+        #{constructionerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="qsadname != null" >
+        #{qsadname,jdbcType=VARCHAR},
+      </if>
+      <if test="qsader != null" >
+        #{qsader,jdbcType=VARCHAR},
+      </if>
+      <if test="qsaderName != null" >
+        #{qsaderName,jdbcType=VARCHAR},
+      </if>
+      <if test="standard1 != null" >
+        #{standard1,jdbcType=VARCHAR},
+      </if>
+      <if test="standard2 != null" >
+        #{standard2,jdbcType=VARCHAR},
+      </if>
+      <if test="standard3 != null" >
+        #{standard3,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        now(),
+      </if>
+      <if test="updateTime != null" >
+        now(),
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cpmip.pojo.Report" >
+    update cpmip_report
+    <set >
+      <if test="reportId != null" >
+        report_id = #{reportId,jdbcType=VARCHAR},
+      </if>
+      <if test="construname != null" >
+        construname = #{construname,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null" >
+        position = #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null" >
+        money = #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="area != null" >
+        area = #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="reportTime != null" >
+        report_time = #{reportTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="buildname != null" >
+        buildname = #{buildname,jdbcType=VARCHAR},
+      </if>
+      <if test="builder != null" >
+        builder = #{builder,jdbcType=VARCHAR},
+      </if>
+      <if test="builderPhone != null" >
+        builder_phone = #{builderPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="construction != null" >
+        construction = #{construction,jdbcType=VARCHAR},
+      </if>
+      <if test="constructioner != null" >
+        constructioner = #{constructioner,jdbcType=VARCHAR},
+      </if>
+      <if test="constructionerPhone != null" >
+        constructioner_phone = #{constructionerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="qsadname != null" >
+        qsadname = #{qsadname,jdbcType=VARCHAR},
+      </if>
+      <if test="qsader != null" >
+        qsader = #{qsader,jdbcType=VARCHAR},
+      </if>
+      <if test="qsaderName != null" >
+        qsader_name = #{qsaderName,jdbcType=VARCHAR},
+      </if>
+      <if test="standard1 != null" >
+        standard1 = #{standard1,jdbcType=VARCHAR},
+      </if>
+      <if test="standard2 != null" >
+        standard2 = #{standard2,jdbcType=VARCHAR},
+      </if>
+      <if test="standard3 != null" >
+        standard3 = #{standard3,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = now(),
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cpmip.pojo.Report" >
+    update cpmip_report
+    set report_id = #{reportId,jdbcType=VARCHAR},
+      construname = #{construname,jdbcType=VARCHAR},
+      position = #{position,jdbcType=VARCHAR},
+      money = #{money,jdbcType=DECIMAL},
+      area = #{area,jdbcType=VARCHAR},
+      report_time = #{reportTime,jdbcType=TIMESTAMP},
+      buildname = #{buildname,jdbcType=VARCHAR},
+      builder = #{builder,jdbcType=VARCHAR},
+      builder_phone = #{builderPhone,jdbcType=VARCHAR},
+      construction = #{construction,jdbcType=VARCHAR},
+      constructioner = #{constructioner,jdbcType=VARCHAR},
+      constructioner_phone = #{constructionerPhone,jdbcType=VARCHAR},
+      qsadname = #{qsadname,jdbcType=VARCHAR},
+      qsader = #{qsader,jdbcType=VARCHAR},
+      qsader_name = #{qsaderName,jdbcType=VARCHAR},
+      standard1 = #{standard1,jdbcType=VARCHAR},
+      standard2 = #{standard2,jdbcType=VARCHAR},
+      standard3 = #{standard3,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = now()
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
