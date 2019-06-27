@@ -1,6 +1,7 @@
 package com.cpmip.dao;
 
 import com.cpmip.pojo.ComUser;
+import org.apache.ibatis.annotations.Param;
 
 public interface ComUserMapper {
     int deleteByPrimaryKey(Integer id);
@@ -14,4 +15,8 @@ public interface ComUserMapper {
     int updateByPrimaryKeySelective(ComUser record);
 
     int updateByPrimaryKey(ComUser record);
+
+    int checkUsername(String username);
+
+    ComUser selectLogin(@Param("username") String username, @Param("password") String password);
 }

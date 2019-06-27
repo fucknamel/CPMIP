@@ -11,6 +11,8 @@ public class ComUser {
 
     private String name;
 
+    private String password;
+
     private String province;
 
     private String city;
@@ -43,11 +45,12 @@ public class ComUser {
 
     private Date updateTime;
 
-    public ComUser(Integer id, Integer company, String ecotype, String name, String province, String city, String district, String street, String detailed, String orgcode, String busilicense, String legaler, String legalerPhone, String contracter, String contracterPhone, Date orgcodeTime, String question, String answer, Date createTime, Date updateTime) {
+    public ComUser(Integer id, Integer company, String ecotype, String name, String password, String province, String city, String district, String street, String detailed, String orgcode, String busilicense, String legaler, String legalerPhone, String contracter, String contracterPhone, Date orgcodeTime, String question, String answer, Date createTime, Date updateTime) {
         this.id = id;
         this.company = company;
         this.ecotype = ecotype;
         this.name = name;
+        this.password = password;
         this.province = province;
         this.city = city;
         this.district = district;
@@ -100,6 +103,14 @@ public class ComUser {
 
     public void setName(String name) {
         this.name = name == null ? null : name.trim();
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password == null ? null : password.trim();
     }
 
     public String getProvince() {

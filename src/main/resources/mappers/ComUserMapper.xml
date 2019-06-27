@@ -7,6 +7,7 @@
       <arg column="company" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="ecotype" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="password" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="province" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="city" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="district" jdbcType="VARCHAR" javaType="java.lang.String" />
@@ -26,8 +27,8 @@
     </constructor>
   </resultMap>
   <sql id="Base_Column_List" >
-    id, company, ecotype, name, province, city, district, street, detailed, orgcode, 
-    busilicense, legaler, legaler_phone, contracter, contracter_phone, orgcode_time, 
+    id, company, ecotype, name, password, province, city, district, street, detailed, 
+    orgcode, busilicense, legaler, legaler_phone, contracter, contracter_phone, orgcode_time, 
     question, answer, create_time, update_time
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
@@ -42,19 +43,21 @@
   </delete>
   <insert id="insert" parameterType="com.cpmip.pojo.ComUser" >
     insert into cpmip_companyuser (id, company, ecotype, 
-      name, province, city, 
-      district, street, detailed, 
-      orgcode, busilicense, legaler, 
-      legaler_phone, contracter, contracter_phone, 
-      orgcode_time, question, answer, 
-      create_time, update_time)
+      name, password, province, 
+      city, district, street, 
+      detailed, orgcode, busilicense, 
+      legaler, legaler_phone, contracter, 
+      contracter_phone, orgcode_time, question, 
+      answer, create_time, update_time
+      )
     values (#{id,jdbcType=INTEGER}, #{company,jdbcType=INTEGER}, #{ecotype,jdbcType=VARCHAR}, 
-      #{name,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, 
-      #{district,jdbcType=VARCHAR}, #{street,jdbcType=VARCHAR}, #{detailed,jdbcType=VARCHAR}, 
-      #{orgcode,jdbcType=VARCHAR}, #{busilicense,jdbcType=VARCHAR}, #{legaler,jdbcType=VARCHAR}, 
-      #{legalerPhone,jdbcType=VARCHAR}, #{contracter,jdbcType=VARCHAR}, #{contracterPhone,jdbcType=VARCHAR}, 
-      #{orgcodeTime,jdbcType=TIMESTAMP}, #{question,jdbcType=VARCHAR}, #{answer,jdbcType=VARCHAR}, 
-      now(), now())
+      #{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, 
+      #{city,jdbcType=VARCHAR}, #{district,jdbcType=VARCHAR}, #{street,jdbcType=VARCHAR}, 
+      #{detailed,jdbcType=VARCHAR}, #{orgcode,jdbcType=VARCHAR}, #{busilicense,jdbcType=VARCHAR}, 
+      #{legaler,jdbcType=VARCHAR}, #{legalerPhone,jdbcType=VARCHAR}, #{contracter,jdbcType=VARCHAR}, 
+      #{contracterPhone,jdbcType=VARCHAR}, #{orgcodeTime,jdbcType=TIMESTAMP}, #{question,jdbcType=VARCHAR}, 
+      #{answer,jdbcType=VARCHAR}, now(), now()
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.cpmip.pojo.ComUser" >
     insert into cpmip_companyuser
@@ -70,6 +73,9 @@
       </if>
       <if test="name != null" >
         name,
+      </if>
+      <if test="password != null" >
+        password,
       </if>
       <if test="province != null" >
         province,
@@ -133,6 +139,9 @@
       <if test="name != null" >
         #{name,jdbcType=VARCHAR},
       </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
       <if test="province != null" >
         #{province,jdbcType=VARCHAR},
       </if>
@@ -179,7 +188,7 @@
         now(),
       </if>
       <if test="updateTime != null" >
-        now(),
+        nowO(),
       </if>
     </trim>
   </insert>
@@ -194,6 +203,9 @@
       </if>
       <if test="name != null" >
         name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
       </if>
       <if test="province != null" >
         province = #{province,jdbcType=VARCHAR},
@@ -251,6 +263,7 @@
     set company = #{company,jdbcType=INTEGER},
       ecotype = #{ecotype,jdbcType=VARCHAR},
       name = #{name,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
       province = #{province,jdbcType=VARCHAR},
       city = #{city,jdbcType=VARCHAR},
       district = #{district,jdbcType=VARCHAR},
@@ -269,4 +282,15 @@
       update_time = now()
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="checkUsername" resultType="int" parameterType="string">
+    select count(1) from cpmip_companyuser
+    where name = #{username}
+  </select>
+  <select id="selectLogin" resultMap="BaseResultMap" parameterType="map">
+    select
+    <include refid="Base_Column_List"/>
+    from cpmip_companyuser
+    where name = #{username}
+    and password = #{password}
+  </select>
 </mapper>
