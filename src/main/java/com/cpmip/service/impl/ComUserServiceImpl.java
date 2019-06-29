@@ -1,5 +1,6 @@
 package com.cpmip.service.impl;
 
+import com.cpmip.common.Const;
 import com.cpmip.common.ServerResponse;
 import com.cpmip.dao.ComUserMapper;
 import com.cpmip.pojo.ComUser;
@@ -15,7 +16,6 @@ public class ComUserServiceImpl implements IComUserService {
     @Autowired
     private ComUserMapper comUserMapper;
 
-    @Override
     public ServerResponse login(String username, String password){
         int resultCount = comUserMapper.checkUsername(username);
         if (resultCount == 0){
@@ -30,5 +30,57 @@ public class ComUserServiceImpl implements IComUserService {
 
         user.setPassword(StringUtils.EMPTY);
         return ServerResponse.createBySuccess("登录成功", user);
+    }
+
+    public ServerResponse register(ComUser user){
+        ServerResponse validResponse = this.checkValid(user.getName(), Const.USERNAME);
+        if (!validResponse.isSuccess()) {
+            return validResponse;
+        }
+
+        validResponse = this.checkValid(user.getOrgcode(), Const.ORGCODE);
+        if (!validResponse.isSuccess()) {
+            return validResponse;
+        }
+
+        validResponse = this.checkValid(user.getBusilicense(), Const.BUSILICENSE);
+        if (!validResponse.isSuccess()) {
+            return validResponse;
+        }
+
+        user.setPassword(MD5Util.MD5EncodeUtf8(user.getPassword()));
+
+        int resultCount = comUserMapper.insert(user);
+        if (resultCount == 0) {
+            return ServerResponse.createByErrorMessage("注册失败");
+        }
+        return ServerResponse.createBySuccessMessage("注册成功");
+    }
+
+    public ServerResponse<String> checkValid(String str, String type){
+        if (StringUtils.isNotBlank(type)) {
+            //开始校验
+            if (Const.USERNAME.equals(type)){
+                int resultCount = comUserMapper.checkUsername(str);
+                if (resultCount > 0) {
+                    return ServerResponse.createByErrorMessage("用户名已存在");
+                }
+            }
+            if (Const.ORGCODE.equals(type)){
+                int resultCount = comUserMapper.checkOrgcode(str);
+                if (resultCount > 0) {
+                    return ServerResponse.createByErrorMessage("组织机构代码已存在");
+                }
+            }
+            if (Const.BUSILICENSE.equals(type)){
+                int resultCount = comUserMapper.checkBusilicense(str);
+                if (resultCount > 0) {
+                    return ServerResponse.createByErrorMessage("营业执照注册证号已存在");
+                }
+            }
+        } else {
+            return ServerResponse.createByErrorMessage("参数错误");
+        }
+        return ServerResponse.createBySuccessMessage("校验成功");
     }
 }

@@ -8,7 +8,9 @@ public class Const {
 
     public static final String CURRENT_USER = "currentUser";
 
-    public static final String EMAIL = "email";
+    public static final String ORGCODE = "orgcode";
+
+    public static final String BUSILICENSE = "busilicense";
 
     public static final String USERNAME = "username";
 

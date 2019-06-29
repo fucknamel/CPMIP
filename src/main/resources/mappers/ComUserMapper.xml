@@ -293,4 +293,12 @@
     where name = #{username}
     and password = #{password}
   </select>
+  <select id="checkOrgcode" resultType="int" parameterType="string">
+    select count(1) from cpmip_companyuser
+    where orgcode = #{orgcode}
+  </select>
+  <select id="checkBusilicense" resultType="int" parameterType="int">
+    select count(1) from cpmip_companyuser
+    where busilicense = #{busilicense}
+  </select>
 </mapper>
