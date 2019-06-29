@@ -297,7 +297,7 @@
     select count(1) from cpmip_companyuser
     where orgcode = #{orgcode}
   </select>
-  <select id="checkBusilicense" resultType="int" parameterType="int">
+  <select id="checkBusilicense" resultType="int" parameterType="string">
     select count(1) from cpmip_companyuser
     where busilicense = #{busilicense}
   </select>
