@@ -42,4 +42,10 @@ public class GovUserController {
     public ServerResponse register(GovUser user){
         return iGovUserService.register(user);
     }
+
+    @RequestMapping(value = "check_valid.do", method = RequestMethod.POST)
+    @ResponseBody
+    public ServerResponse<String> checkValid(String str, String type) {
+        return iGovUserService.checkValid(str, type);
+    }
 }

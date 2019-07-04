@@ -8,4 +8,6 @@ public interface IGovUserService {
     public ServerResponse login(String jobId, String password);
 
     public ServerResponse register(GovUser user);
+
+    ServerResponse<String> checkValid(String str, String type);
 }
