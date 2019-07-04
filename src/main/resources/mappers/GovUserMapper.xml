@@ -176,4 +176,15 @@
       update_time = now()
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="checkId" parameterType="string" resultType="int">
+    select count(1) from cpmip_governmentuser
+    where job_id = #{jobId}
+  </select>
+  <select id="selectLogin" resultMap="BaseResultMap" parameterType="map">
+    select
+    <include refid="Base_Column_List"/>
+    from cpmip_governmentuser
+    where job_id = #{jobId}
+    and password = #{password}
+  </select>
 </mapper>
