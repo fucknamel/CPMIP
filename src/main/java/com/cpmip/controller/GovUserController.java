@@ -36,4 +36,10 @@ public class GovUserController {
         session.removeAttribute(Const.CURRENT_USER);
         return ServerResponse.createBySuccess();
     }
+
+    @RequestMapping(value = "register.do", method = RequestMethod.POST)
+    @ResponseBody
+    public ServerResponse register(GovUser user){
+        return iGovUserService.register(user);
+    }
 }

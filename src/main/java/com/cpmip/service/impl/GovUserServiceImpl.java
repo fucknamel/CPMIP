@@ -1,5 +1,6 @@
 package com.cpmip.service.impl;
 
+import com.cpmip.common.Const;
 import com.cpmip.common.ServerResponse;
 import com.cpmip.dao.GovUserMapper;
 import com.cpmip.pojo.GovUser;
@@ -29,5 +30,35 @@ public class GovUserServiceImpl implements IGovUserService {
 
         user.setPassword(StringUtils.EMPTY);
         return ServerResponse.createBySuccess("登录成功", user);
+    }
+
+    public ServerResponse register(GovUser user){
+        ServerResponse validResponse = this.checkValid(user.getJobId(), Const.JOBID);
+        if (!validResponse.isSuccess()) {
+            return validResponse;
+        }
+
+        user.setPassword(MD5Util.MD5EncodeUtf8(user.getPassword()));
+
+        int resultCount = govUserMapper.insert(user);
+        if (resultCount == 0) {
+            return ServerResponse.createByErrorMessage("注册失败");
+        }
+        return ServerResponse.createBySuccessMessage("注册成功");
+    }
+
+    public ServerResponse<String> checkValid(String jobId, String type){
+        if (StringUtils.isNotBlank(type)) {
+            //开始校验
+            if (Const.JOBID.equals(type)){
+                int resultCount = govUserMapper.checkId(jobId);
+                if (resultCount > 0) {
+                    return ServerResponse.createByErrorMessage("jobId已经存在");
+                }
+            }
+        } else {
+            return ServerResponse.createByErrorMessage("参数错误");
+        }
+        return ServerResponse.createBySuccessMessage("校验成功");
     }
 }
