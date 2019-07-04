@@ -1,6 +1,7 @@
 package com.cpmip.dao;
 
 import com.cpmip.pojo.GovUser;
+import org.apache.ibatis.annotations.Param;
 
 public interface GovUserMapper {
     int deleteByPrimaryKey(Integer id);
@@ -14,4 +15,12 @@ public interface GovUserMapper {
     int updateByPrimaryKeySelective(GovUser record);
 
     int updateByPrimaryKey(GovUser record);
+
+
+    int checkPhone(String phone);
+
+    int checkUsername(String username);
+
+    GovUser selectLogin(@Param("username") String username, @Param("password") String password);
+
 }

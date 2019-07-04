@@ -17,4 +17,6 @@ public class Const {
     public interface ProductListOrderBy{
         Set<String> PRICE_ASC_DESC = Sets.newHashSet("price_desc", "price_asc");
     }
+
+    public static final String GOVUSERPHONE="govUserPhone";
 }
