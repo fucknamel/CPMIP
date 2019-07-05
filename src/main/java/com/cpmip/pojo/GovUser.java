@@ -5,8 +5,6 @@ import java.util.Date;
 public class GovUser {
     private Integer id;
 
-    private Integer department;
-
     private String jobId;
 
     private String name;
@@ -27,9 +25,8 @@ public class GovUser {
 
     private Date updateTime;
 
-    public GovUser(Integer id, Integer department, String jobId, String name, String phone, String dept, String post, String password, String question, String answer, Date createTime, Date updateTime) {
+    public GovUser(Integer id, String jobId, String name, String phone, String dept, String post, String password, String question, String answer, Date createTime, Date updateTime) {
         this.id = id;
-        this.department = department;
         this.jobId = jobId;
         this.name = name;
         this.phone = phone;
@@ -52,14 +49,6 @@ public class GovUser {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Integer getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(Integer department) {
-        this.department = department;
     }
 
     public String getJobId() {

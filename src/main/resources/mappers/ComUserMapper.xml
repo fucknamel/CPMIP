@@ -14,12 +14,10 @@
       <arg column="street" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="detailed" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="orgcode" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="busilicense" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="legaler" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="legaler_phone" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="contracter" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="contracter_phone" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="orgcode_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
       <arg column="question" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="answer" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
@@ -28,7 +26,7 @@
   </resultMap>
   <sql id="Base_Column_List" >
     id, company, ecotype, name, password, province, city, district, street, detailed, 
-    orgcode, busilicense, legaler, legaler_phone, contracter, contracter_phone, orgcode_time, 
+    orgcode, legaler, legaler_phone, contracter, contracter_phone,
     question, answer, create_time, update_time
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
@@ -45,17 +43,17 @@
     insert into cpmip_companyuser (id, company, ecotype, 
       name, password, province, 
       city, district, street, 
-      detailed, orgcode, busilicense, 
+      detailed, orgcode,
       legaler, legaler_phone, contracter, 
-      contracter_phone, orgcode_time, question, 
+      contracter_phone, question,
       answer, create_time, update_time
       )
     values (#{id,jdbcType=INTEGER}, #{company,jdbcType=INTEGER}, #{ecotype,jdbcType=VARCHAR}, 
       #{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, 
       #{city,jdbcType=VARCHAR}, #{district,jdbcType=VARCHAR}, #{street,jdbcType=VARCHAR}, 
-      #{detailed,jdbcType=VARCHAR}, #{orgcode,jdbcType=VARCHAR}, #{busilicense,jdbcType=VARCHAR}, 
+      #{detailed,jdbcType=VARCHAR}, #{orgcode,jdbcType=VARCHAR},
       #{legaler,jdbcType=VARCHAR}, #{legalerPhone,jdbcType=VARCHAR}, #{contracter,jdbcType=VARCHAR}, 
-      #{contracterPhone,jdbcType=VARCHAR}, #{orgcodeTime,jdbcType=TIMESTAMP}, #{question,jdbcType=VARCHAR}, 
+      #{contracterPhone,jdbcType=VARCHAR}, #{question,jdbcType=VARCHAR},
       #{answer,jdbcType=VARCHAR}, now(), now()
       )
   </insert>
@@ -95,9 +93,6 @@
       <if test="orgcode != null" >
         orgcode,
       </if>
-      <if test="busilicense != null" >
-        busilicense,
-      </if>
       <if test="legaler != null" >
         legaler,
       </if>
@@ -109,9 +104,6 @@
       </if>
       <if test="contracterPhone != null" >
         contracter_phone,
-      </if>
-      <if test="orgcodeTime != null" >
-        orgcode_time,
       </if>
       <if test="question != null" >
         question,
@@ -160,9 +152,6 @@
       <if test="orgcode != null" >
         #{orgcode,jdbcType=VARCHAR},
       </if>
-      <if test="busilicense != null" >
-        #{busilicense,jdbcType=VARCHAR},
-      </if>
       <if test="legaler != null" >
         #{legaler,jdbcType=VARCHAR},
       </if>
@@ -174,9 +163,6 @@
       </if>
       <if test="contracterPhone != null" >
         #{contracterPhone,jdbcType=VARCHAR},
-      </if>
-      <if test="orgcodeTime != null" >
-        #{orgcodeTime,jdbcType=TIMESTAMP},
       </if>
       <if test="question != null" >
         #{question,jdbcType=VARCHAR},
@@ -225,9 +211,6 @@
       <if test="orgcode != null" >
         orgcode = #{orgcode,jdbcType=VARCHAR},
       </if>
-      <if test="busilicense != null" >
-        busilicense = #{busilicense,jdbcType=VARCHAR},
-      </if>
       <if test="legaler != null" >
         legaler = #{legaler,jdbcType=VARCHAR},
       </if>
@@ -239,9 +222,6 @@
       </if>
       <if test="contracterPhone != null" >
         contracter_phone = #{contracterPhone,jdbcType=VARCHAR},
-      </if>
-      <if test="orgcodeTime != null" >
-        orgcode_time = #{orgcodeTime,jdbcType=TIMESTAMP},
       </if>
       <if test="question != null" >
         question = #{question,jdbcType=VARCHAR},
@@ -270,12 +250,10 @@
       street = #{street,jdbcType=VARCHAR},
       detailed = #{detailed,jdbcType=VARCHAR},
       orgcode = #{orgcode,jdbcType=VARCHAR},
-      busilicense = #{busilicense,jdbcType=VARCHAR},
       legaler = #{legaler,jdbcType=VARCHAR},
       legaler_phone = #{legalerPhone,jdbcType=VARCHAR},
       contracter = #{contracter,jdbcType=VARCHAR},
       contracter_phone = #{contracterPhone,jdbcType=VARCHAR},
-      orgcode_time = #{orgcodeTime,jdbcType=TIMESTAMP},
       question = #{question,jdbcType=VARCHAR},
       answer = #{answer,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
@@ -296,9 +274,5 @@
   <select id="checkOrgcode" resultType="int" parameterType="string">
     select count(1) from cpmip_companyuser
     where orgcode = #{orgcode}
-  </select>
-  <select id="checkBusilicense" resultType="int" parameterType="string">
-    select count(1) from cpmip_companyuser
-    where busilicense = #{busilicense}
   </select>
 </mapper>

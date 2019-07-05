@@ -43,11 +43,6 @@ public class ComUserServiceImpl implements IComUserService {
             return validResponse;
         }
 
-        validResponse = this.checkValid(user.getBusilicense(), Const.BUSILICENSE);
-        if (!validResponse.isSuccess()) {
-            return validResponse;
-        }
-
         user.setPassword(MD5Util.MD5EncodeUtf8(user.getPassword()));
 
         int resultCount = comUserMapper.insert(user);
@@ -70,12 +65,6 @@ public class ComUserServiceImpl implements IComUserService {
                 int resultCount = comUserMapper.checkOrgcode(str);
                 if (resultCount > 0) {
                     return ServerResponse.createByErrorMessage("组织机构代码已存在");
-                }
-            }
-            if (Const.BUSILICENSE.equals(type)){
-                int resultCount = comUserMapper.checkBusilicense(str);
-                if (resultCount > 0) {
-                    return ServerResponse.createByErrorMessage("营业执照注册证号已存在");
                 }
             }
         } else {

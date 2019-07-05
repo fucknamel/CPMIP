@@ -25,8 +25,6 @@ public class ComUser {
 
     private String orgcode;
 
-    private String busilicense;
-
     private String legaler;
 
     private String legalerPhone;
@@ -34,8 +32,6 @@ public class ComUser {
     private String contracter;
 
     private String contracterPhone;
-
-    private Date orgcodeTime;
 
     private String question;
 
@@ -45,7 +41,7 @@ public class ComUser {
 
     private Date updateTime;
 
-    public ComUser(Integer id, Integer company, String ecotype, String name, String password, String province, String city, String district, String street, String detailed, String orgcode, String busilicense, String legaler, String legalerPhone, String contracter, String contracterPhone, Date orgcodeTime, String question, String answer, Date createTime, Date updateTime) {
+    public ComUser(Integer id, Integer company, String ecotype, String name, String password, String province, String city, String district, String street, String detailed, String orgcode, String legaler, String legalerPhone, String contracter, String contracterPhone, String question, String answer, Date createTime, Date updateTime) {
         this.id = id;
         this.company = company;
         this.ecotype = ecotype;
@@ -57,12 +53,10 @@ public class ComUser {
         this.street = street;
         this.detailed = detailed;
         this.orgcode = orgcode;
-        this.busilicense = busilicense;
         this.legaler = legaler;
         this.legalerPhone = legalerPhone;
         this.contracter = contracter;
         this.contracterPhone = contracterPhone;
-        this.orgcodeTime = orgcodeTime;
         this.question = question;
         this.answer = answer;
         this.createTime = createTime;
@@ -161,14 +155,6 @@ public class ComUser {
         this.orgcode = orgcode == null ? null : orgcode.trim();
     }
 
-    public String getBusilicense() {
-        return busilicense;
-    }
-
-    public void setBusilicense(String busilicense) {
-        this.busilicense = busilicense == null ? null : busilicense.trim();
-    }
-
     public String getLegaler() {
         return legaler;
     }
@@ -199,14 +185,6 @@ public class ComUser {
 
     public void setContracterPhone(String contracterPhone) {
         this.contracterPhone = contracterPhone == null ? null : contracterPhone.trim();
-    }
-
-    public Date getOrgcodeTime() {
-        return orgcodeTime;
-    }
-
-    public void setOrgcodeTime(Date orgcodeTime) {
-        this.orgcodeTime = orgcodeTime;
     }
 
     public String getQuestion() {

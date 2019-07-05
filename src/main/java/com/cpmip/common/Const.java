@@ -10,8 +10,6 @@ public class Const {
 
     public static final String ORGCODE = "orgcode";
 
-    public static final String BUSILICENSE = "busilicense";
-
     public static final String USERNAME = "username";
 
     public static final String JOBID = "jobId";

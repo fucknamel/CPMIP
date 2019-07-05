@@ -4,7 +4,6 @@
   <resultMap id="BaseResultMap" type="com.cpmip.pojo.GovUser" >
     <constructor >
       <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="department" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="job_id" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="name" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="phone" jdbcType="VARCHAR" javaType="java.lang.String" />
@@ -18,7 +17,7 @@
     </constructor>
   </resultMap>
   <sql id="Base_Column_List" >
-    id, department, job_id, name, phone, dept, post, password, question, answer, create_time, 
+    id, job_id, name, phone, dept, post, password, question, answer, create_time,
     update_time
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
@@ -32,12 +31,12 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.cpmip.pojo.GovUser" >
-    insert into cpmip_governmentuser (id, department, job_id, 
+    insert into cpmip_governmentuser (id, job_id,
       name, phone, dept, 
       post, password, question, 
       answer, create_time, update_time
       )
-    values (#{id,jdbcType=INTEGER}, #{department,jdbcType=INTEGER}, #{jobId,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{jobId,jdbcType=VARCHAR},
       #{name,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{dept,jdbcType=VARCHAR}, 
       #{post,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{question,jdbcType=VARCHAR}, 
       #{answer,jdbcType=VARCHAR}, now(), now()
@@ -48,9 +47,6 @@
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
-      </if>
-      <if test="department != null" >
-        department,
       </if>
       <if test="jobId != null" >
         job_id,
@@ -87,9 +83,6 @@
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="department != null" >
-        #{department,jdbcType=INTEGER},
-      </if>
       <if test="jobId != null" >
         #{jobId,jdbcType=VARCHAR},
       </if>
@@ -125,9 +118,6 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.cpmip.pojo.GovUser" >
     update cpmip_governmentuser
     <set >
-      <if test="department != null" >
-        department = #{department,jdbcType=INTEGER},
-      </if>
       <if test="jobId != null" >
         job_id = #{jobId,jdbcType=VARCHAR},
       </if>
@@ -163,8 +153,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.cpmip.pojo.GovUser" >
     update cpmip_governmentuser
-    set department = #{department,jdbcType=INTEGER},
-      job_id = #{jobId,jdbcType=VARCHAR},
+    set job_id = #{jobId,jdbcType=VARCHAR},
       name = #{name,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR},
       dept = #{dept,jdbcType=VARCHAR},

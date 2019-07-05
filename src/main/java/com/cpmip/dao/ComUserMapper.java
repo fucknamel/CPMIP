@@ -21,6 +21,4 @@ public interface ComUserMapper {
     ComUser selectLogin(@Param("username") String username, @Param("password") String password);
 
     int checkOrgcode(String orgcode);
-
-    int checkBusilicense(String busilicense);
 }
