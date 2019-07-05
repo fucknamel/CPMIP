@@ -10,5 +10,5 @@ public interface IGovUserService {
 
     ServerResponse register(GovUser user);
 
-    ServerResponse<String> checkValid(String str, String type);
+    ServerResponse<String> checkValid(String jobId, String type);
 }

@@ -19,7 +19,7 @@ public interface GovUserMapper {
 
     int checkPhone(String phone);
 
-    int checkUsername(String username);
+    int checkJObId(String jobId);
 
     GovUser selectLogin(@Param("username") String username, @Param("password") String password);
 

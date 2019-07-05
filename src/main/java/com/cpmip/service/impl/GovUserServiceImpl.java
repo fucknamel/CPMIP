@@ -16,14 +16,14 @@ public class GovUserServiceImpl implements IGovUserService{
     @Autowired
     private GovUserMapper govUserMapper;
 
-    public ServerResponse login(String username, String password){
-        int resultCount = govUserMapper.checkUsername(username);
+    public ServerResponse login(String jobId, String password){
+        int resultCount = govUserMapper.checkJObId(jobId);
         if (resultCount == 0){
-            return ServerResponse.createByErrorMessage("用户名不存在");
+            return ServerResponse.createByErrorMessage("jobId不存在");
         }
 
         String md5Password = MD5Util.MD5EncodeUtf8(password);
-        GovUser user = govUserMapper.selectLogin(username, md5Password);
+        GovUser user = govUserMapper.selectLogin(jobId, md5Password);
         if (user == null) {
             return ServerResponse.createByErrorMessage("密码错误");
         }
@@ -33,7 +33,7 @@ public class GovUserServiceImpl implements IGovUserService{
     }
 
     public ServerResponse register(GovUser user){
-        ServerResponse validResponse = this.checkValid(user.getName(), Const.USERNAME);
+        ServerResponse validResponse = this.checkValid(user.getName(), Const.JOBID);
         if (!validResponse.isSuccess()) {
             return validResponse;
         }
@@ -56,9 +56,9 @@ public class GovUserServiceImpl implements IGovUserService{
         if (StringUtils.isNotBlank(type)) {
             //开始校验
             if (Const.USERNAME.equals(type)) {
-                int resultCount = govUserMapper.checkUsername(str);
+                int resultCount = govUserMapper.checkJObId(str);
                 if (resultCount > 0) {
-                    return ServerResponse.createByErrorMessage("用户名已存在");
+                    return ServerResponse.createByErrorMessage("jobId已存在");
                 }
             }
 

@@ -19,4 +19,6 @@ public class Const {
     }
 
     public static final String GOVUSERPHONE="govUserPhone";
+
+    public static final String JOBID="jodId";
 }
