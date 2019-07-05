@@ -19,7 +19,7 @@ public class GovUserController {
     @Autowired
     private IGovUserService iGovUserService;
 
-    @RequestMapping(value = "gov_login.do", method = RequestMethod.POST)
+    @RequestMapping(value = "login.do", method = RequestMethod.POST)
     @ResponseBody
     public ServerResponse<GovUser> login(String username, String password, HttpSession session){
         ServerResponse<GovUser> response = iGovUserService.login(username, password);
@@ -30,14 +30,14 @@ public class GovUserController {
         return response;
     }
 
-    @RequestMapping(value = "gov_logout.do", method = RequestMethod.POST)
+    @RequestMapping(value = "logout.do", method = RequestMethod.POST)
     @ResponseBody
     public ServerResponse<String> logout(HttpSession session) {
         session.removeAttribute(Const.CURRENT_USER);
         return ServerResponse.createBySuccess();
     }
 
-    @RequestMapping(value = "gov_register.do", method = RequestMethod.POST)
+    @RequestMapping(value = "register.do", method = RequestMethod.POST)
     @ResponseBody
     public ServerResponse<String> register(GovUser user) {
         return iGovUserService.register(user);
