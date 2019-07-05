@@ -6,4 +6,6 @@ import com.cpmip.pojo.Aqsg;
 public interface IAqsgService {
 
     public ServerResponse add(Aqsg item);
+
+    public ServerResponse deleteById(Integer id);
 }

@@ -21,4 +21,10 @@ public class AqsgController {
     public ServerResponse add(Aqsg item){
         return iAqsgService.add(item);
     }
+
+    @RequestMapping(value = "delete.do", method = RequestMethod.POST)
+    @ResponseBody
+    public ServerResponse deleteById(Integer id){
+        return iAqsgService.deleteById(id);
+    }
 }
