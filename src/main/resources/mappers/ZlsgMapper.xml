@@ -9,7 +9,7 @@
       <arg column="build" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="construction" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="position" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="accident" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="build" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="happen_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
       <arg column="report_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
       <arg column="money" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
@@ -21,7 +21,7 @@
     </constructor>
   </resultMap>
   <sql id="Base_Column_List" >
-    id, zlsg_id, construname, build, construction, position, accident, happen_time, report_time, 
+    id, zlsg_id, construname, build, construction, position, build, happen_time, report_time,
     money, reason, actions, repons, create_time, update_time
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
@@ -37,13 +37,13 @@
   <insert id="insert" parameterType="com.cpmip.pojo.Zlsg" >
     insert into cpmip_zlsg (id, zlsg_id, construname, 
       build, construction, position, 
-      accident, happen_time, report_time, 
+      build, happen_time, report_time,
       money, reason, actions, 
       repons, create_time, update_time
       )
     values (#{id,jdbcType=INTEGER}, #{zlsgId,jdbcType=VARCHAR}, #{construname,jdbcType=VARCHAR}, 
       #{build,jdbcType=VARCHAR}, #{construction,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, 
-      #{accident,jdbcType=VARCHAR}, #{happenTime,jdbcType=TIMESTAMP}, #{reportTime,jdbcType=TIMESTAMP}, 
+      #{build,jdbcType=VARCHAR}, #{happenTime,jdbcType=TIMESTAMP}, #{reportTime,jdbcType=TIMESTAMP},
       #{money,jdbcType=DECIMAL}, #{reason,jdbcType=VARCHAR}, #{actions,jdbcType=VARCHAR}, 
       #{repons,jdbcType=VARCHAR}, now(), now()
       )
@@ -69,8 +69,8 @@
       <if test="position != null" >
         position,
       </if>
-      <if test="accident != null" >
-        accident,
+      <if test="build != null" >
+        build,
       </if>
       <if test="happenTime != null" >
         happen_time,
@@ -116,8 +116,8 @@
       <if test="position != null" >
         #{position,jdbcType=VARCHAR},
       </if>
-      <if test="accident != null" >
-        #{accident,jdbcType=VARCHAR},
+      <if test="build != null" >
+        #{build,jdbcType=VARCHAR},
       </if>
       <if test="happenTime != null" >
         #{happenTime,jdbcType=TIMESTAMP},
@@ -163,8 +163,8 @@
       <if test="position != null" >
         position = #{position,jdbcType=VARCHAR},
       </if>
-      <if test="accident != null" >
-        accident = #{accident,jdbcType=VARCHAR},
+      <if test="build != null" >
+        build = #{build,jdbcType=VARCHAR},
       </if>
       <if test="happenTime != null" >
         happen_time = #{happenTime,jdbcType=TIMESTAMP},
@@ -200,7 +200,7 @@
       build = #{build,jdbcType=VARCHAR},
       construction = #{construction,jdbcType=VARCHAR},
       position = #{position,jdbcType=VARCHAR},
-      accident = #{accident,jdbcType=VARCHAR},
+      build = #{build,jdbcType=VARCHAR},
       happen_time = #{happenTime,jdbcType=TIMESTAMP},
       report_time = #{reportTime,jdbcType=TIMESTAMP},
       money = #{money,jdbcType=DECIMAL},

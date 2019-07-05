@@ -1,43 +1,44 @@
 package com.cpmip.pojo;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class Aqsg {
     private Integer id;
 
-    private Integer aqsgId;
-
     private String construname;
 
     private String construction;
 
-    private String accident;
+    private String build;
 
+    private String position;
+
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date happenTime;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date reportTime;
 
     private String reason;
 
-    private String actions;
-
-    private String repons;
+    private String action;
 
     private Date createTime;
 
     private Date updateTime;
 
-    public Aqsg(Integer id, Integer aqsgId, String construname, String construction, String accident, Date happenTime, Date reportTime, String reason, String actions, String repons, Date createTime, Date updateTime) {
+    public Aqsg(Integer id, String construname, String construction, String build, String position, Date happenTime, Date reportTime, String reason, String action, Date createTime, Date updateTime) {
         this.id = id;
-        this.aqsgId = aqsgId;
         this.construname = construname;
         this.construction = construction;
-        this.accident = accident;
+        this.build = build;
+        this.position = position;
         this.happenTime = happenTime;
         this.reportTime = reportTime;
         this.reason = reason;
-        this.actions = actions;
-        this.repons = repons;
+        this.action = action;
         this.createTime = createTime;
         this.updateTime = updateTime;
     }
@@ -52,14 +53,6 @@ public class Aqsg {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Integer getAqsgId() {
-        return aqsgId;
-    }
-
-    public void setAqsgId(Integer aqsgId) {
-        this.aqsgId = aqsgId;
     }
 
     public String getConstruname() {
@@ -78,12 +71,20 @@ public class Aqsg {
         this.construction = construction == null ? null : construction.trim();
     }
 
-    public String getAccident() {
-        return accident;
+    public String getBuild() {
+        return build;
     }
 
-    public void setAccident(String accident) {
-        this.accident = accident == null ? null : accident.trim();
+    public void setBuild(String build) {
+        this.build = build == null ? null : build.trim();
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position == null ? null : position.trim();
     }
 
     public Date getHappenTime() {
@@ -110,20 +111,12 @@ public class Aqsg {
         this.reason = reason == null ? null : reason.trim();
     }
 
-    public String getActions() {
-        return actions;
+    public String getAction() {
+        return action;
     }
 
-    public void setActions(String actions) {
-        this.actions = actions == null ? null : actions.trim();
-    }
-
-    public String getRepons() {
-        return repons;
-    }
-
-    public void setRepons(String repons) {
-        this.repons = repons == null ? null : repons.trim();
+    public void setAction(String action) {
+        this.action = action == null ? null : action.trim();
     }
 
     public Date getCreateTime() {

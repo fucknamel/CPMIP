@@ -4,22 +4,21 @@
   <resultMap id="BaseResultMap" type="com.cpmip.pojo.Aqsg" >
     <constructor >
       <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="aqsg_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="construname" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="construction" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="accident" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="build" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="position" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="happen_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
       <arg column="report_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
       <arg column="reason" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="actions" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="repons" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="action" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
       <arg column="update_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
     </constructor>
   </resultMap>
   <sql id="Base_Column_List" >
-    id, aqsg_id, construname, construction, accident, happen_time, report_time, reason, 
-    actions, repons, create_time, update_time
+    id, construname, construction, build, position, happen_time, report_time, reason, 
+    action, create_time, update_time
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -32,16 +31,14 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.cpmip.pojo.Aqsg" >
-    insert into cpmip_aqsg (id, aqsg_id, construname, 
-      construction, accident, happen_time, 
-      report_time, reason, actions, 
-      repons, create_time, update_time
-      )
-    values (#{id,jdbcType=INTEGER}, #{aqsgId,jdbcType=INTEGER}, #{construname,jdbcType=VARCHAR}, 
-      #{construction,jdbcType=VARCHAR}, #{accident,jdbcType=VARCHAR}, #{happenTime,jdbcType=TIMESTAMP}, 
-      #{reportTime,jdbcType=TIMESTAMP}, #{reason,jdbcType=VARCHAR}, #{actions,jdbcType=VARCHAR}, 
-      #{repons,jdbcType=VARCHAR}, now(), now()
-      )
+    insert into cpmip_aqsg (id, construname, construction, 
+      build, position, happen_time, 
+      report_time, reason, action, 
+      create_time, update_time)
+    values (#{id,jdbcType=INTEGER}, #{construname,jdbcType=VARCHAR}, #{construction,jdbcType=VARCHAR}, 
+      #{build,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, #{happenTime,jdbcType=TIMESTAMP}, 
+      #{reportTime,jdbcType=TIMESTAMP}, #{reason,jdbcType=VARCHAR}, #{action,jdbcType=VARCHAR}, 
+      now(), now())
   </insert>
   <insert id="insertSelective" parameterType="com.cpmip.pojo.Aqsg" >
     insert into cpmip_aqsg
@@ -49,17 +46,17 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="aqsgId != null" >
-        aqsg_id,
-      </if>
       <if test="construname != null" >
         construname,
       </if>
       <if test="construction != null" >
         construction,
       </if>
-      <if test="accident != null" >
-        accident,
+      <if test="build != null" >
+        build,
+      </if>
+      <if test="position != null" >
+        position,
       </if>
       <if test="happenTime != null" >
         happen_time,
@@ -70,11 +67,8 @@
       <if test="reason != null" >
         reason,
       </if>
-      <if test="actions != null" >
-        actions,
-      </if>
-      <if test="repons != null" >
-        repons,
+      <if test="action != null" >
+        action,
       </if>
       <if test="createTime != null" >
         create_time,
@@ -87,17 +81,17 @@
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="aqsgId != null" >
-        #{aqsgId,jdbcType=INTEGER},
-      </if>
       <if test="construname != null" >
         #{construname,jdbcType=VARCHAR},
       </if>
       <if test="construction != null" >
         #{construction,jdbcType=VARCHAR},
       </if>
-      <if test="accident != null" >
-        #{accident,jdbcType=VARCHAR},
+      <if test="build != null" >
+        #{build,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null" >
+        #{position,jdbcType=VARCHAR},
       </if>
       <if test="happenTime != null" >
         #{happenTime,jdbcType=TIMESTAMP},
@@ -108,11 +102,8 @@
       <if test="reason != null" >
         #{reason,jdbcType=VARCHAR},
       </if>
-      <if test="actions != null" >
-        #{actions,jdbcType=VARCHAR},
-      </if>
-      <if test="repons != null" >
-        #{repons,jdbcType=VARCHAR},
+      <if test="action != null" >
+        #{action,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null" >
         now(),
@@ -125,17 +116,17 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.cpmip.pojo.Aqsg" >
     update cpmip_aqsg
     <set >
-      <if test="aqsgId != null" >
-        aqsg_id = #{aqsgId,jdbcType=INTEGER},
-      </if>
       <if test="construname != null" >
         construname = #{construname,jdbcType=VARCHAR},
       </if>
       <if test="construction != null" >
         construction = #{construction,jdbcType=VARCHAR},
       </if>
-      <if test="accident != null" >
-        accident = #{accident,jdbcType=VARCHAR},
+      <if test="build != null" >
+        build = #{build,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null" >
+        position = #{position,jdbcType=VARCHAR},
       </if>
       <if test="happenTime != null" >
         happen_time = #{happenTime,jdbcType=TIMESTAMP},
@@ -146,32 +137,28 @@
       <if test="reason != null" >
         reason = #{reason,jdbcType=VARCHAR},
       </if>
-      <if test="actions != null" >
-        actions = #{actions,jdbcType=VARCHAR},
-      </if>
-      <if test="repons != null" >
-        repons = #{repons,jdbcType=VARCHAR},
+      <if test="action != null" >
+        action = #{action,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null" >
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="updateTime != null" >
-        update_time = now(),
+        now(),
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.cpmip.pojo.Aqsg" >
     update cpmip_aqsg
-    set aqsg_id = #{aqsgId,jdbcType=INTEGER},
-      construname = #{construname,jdbcType=VARCHAR},
+    set construname = #{construname,jdbcType=VARCHAR},
       construction = #{construction,jdbcType=VARCHAR},
-      accident = #{accident,jdbcType=VARCHAR},
+      build = #{build,jdbcType=VARCHAR},
+      position = #{position,jdbcType=VARCHAR},
       happen_time = #{happenTime,jdbcType=TIMESTAMP},
       report_time = #{reportTime,jdbcType=TIMESTAMP},
       reason = #{reason,jdbcType=VARCHAR},
-      actions = #{actions,jdbcType=VARCHAR},
-      repons = #{repons,jdbcType=VARCHAR},
+      action = #{action,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = now()
     where id = #{id,jdbcType=INTEGER}
