@@ -25,6 +25,7 @@ public class GovUserController {
         ServerResponse<GovUser> response = iGovUserService.login(jobId, password);
         if (response.isSuccess()) {
             session.setAttribute(Const.CURRENT_USER, response.getData());
+            session.setAttribute(Const.ROLE, Const.Role.ROLE_GOV);
         }
 
         return response;
@@ -34,6 +35,7 @@ public class GovUserController {
     @ResponseBody
     public ServerResponse<String> logout(HttpSession session) {
         session.removeAttribute(Const.CURRENT_USER);
+        session.removeAttribute(Const.ROLE);
         return ServerResponse.createBySuccess();
     }
 

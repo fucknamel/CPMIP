@@ -25,6 +25,7 @@ public class ComUserController {
         ServerResponse<ComUser> response = iComUserService.login(username, password);
         if (response.isSuccess()) {
             session.setAttribute(Const.CURRENT_USER, response.getData());
+            session.setAttribute(Const.ROLE, Const.Role.ROLE_COM);
         }
 
         return response;
@@ -34,6 +35,7 @@ public class ComUserController {
     @ResponseBody
     public ServerResponse<String> logout(HttpSession session) {
         session.removeAttribute(Const.CURRENT_USER);
+        session.removeAttribute(Const.ROLE);
         return ServerResponse.createBySuccess();
     }
 

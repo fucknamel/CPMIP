@@ -28,4 +28,12 @@ public class AqsgServiceImpl implements IAqsgService {
         }
         return ServerResponse.createBySuccessMessage("删除成功");
     }
+
+    public ServerResponse changeById(Aqsg item){
+        int resultCount = aqsgMapper.updateByPrimaryKeySelective(item);
+        if (resultCount == 0) {
+            return ServerResponse.createByErrorMessage("修改失败");
+        }
+        return ServerResponse.createBySuccessMessage("修改成功");
+    }
 }

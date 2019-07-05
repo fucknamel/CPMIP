@@ -8,4 +8,6 @@ public interface IAqsgService {
     public ServerResponse add(Aqsg item);
 
     public ServerResponse deleteById(Integer id);
+
+    public ServerResponse changeById(Aqsg item);
 }
