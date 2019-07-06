@@ -19,7 +19,7 @@ public class GovUserServiceImpl implements IGovUserService {
     public ServerResponse login(String jobId, String password){
         int resultCount = govUserMapper.checkId(jobId);
         if (resultCount == 0){
-            return ServerResponse.createByErrorMessage("用户名不存在");
+            return ServerResponse.createByErrorMessage("jobId不存在");
         }
 
         String md5Password = MD5Util.MD5EncodeUtf8(password);
