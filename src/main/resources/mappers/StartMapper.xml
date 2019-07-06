@@ -4,7 +4,6 @@
   <resultMap id="BaseResultMap" type="com.cpmip.pojo.Start" >
     <constructor >
       <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="start_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="construname" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="position" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="area" jdbcType="VARCHAR" javaType="java.lang.String" />
@@ -24,7 +23,7 @@
     </constructor>
   </resultMap>
   <sql id="Base_Column_List" >
-    id, start_id, construname, position, area, type, money, start_time, final_time, builder, 
+    id, construname, position, area, type, money, start_time, final_time, builder,
     buildername, builder_phone, construction, constructioner, constructioner_phone, submit_time, 
     create_time, update_time
   </sql>
@@ -39,14 +38,14 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.cpmip.pojo.Start" >
-    insert into cpmip_start (id, start_id, construname, 
+    insert into cpmip_start (id, construname,
       position, area, type, 
       money, start_time, final_time, 
       builder, buildername, builder_phone, 
       construction, constructioner, constructioner_phone, 
       submit_time, create_time, update_time
       )
-    values (#{id,jdbcType=INTEGER}, #{startId,jdbcType=INTEGER}, #{construname,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{construname,jdbcType=VARCHAR},
       #{position,jdbcType=VARCHAR}, #{area,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
       #{money,jdbcType=DECIMAL}, #{startTime,jdbcType=TIMESTAMP}, #{finalTime,jdbcType=TIMESTAMP}, 
       #{builder,jdbcType=VARCHAR}, #{buildername,jdbcType=VARCHAR}, #{builderPhone,jdbcType=VARCHAR}, 
@@ -59,9 +58,6 @@
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
-      </if>
-      <if test="startId != null" >
-        start_id,
       </if>
       <if test="construname != null" >
         construname,
@@ -116,9 +112,6 @@
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="startId != null" >
-        #{startId,jdbcType=INTEGER},
-      </if>
       <if test="construname != null" >
         #{construname,jdbcType=VARCHAR},
       </if>
@@ -172,9 +165,6 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.cpmip.pojo.Start" >
     update cpmip_start
     <set >
-      <if test="startId != null" >
-        start_id = #{startId,jdbcType=INTEGER},
-      </if>
       <if test="construname != null" >
         construname = #{construname,jdbcType=VARCHAR},
       </if>
@@ -228,8 +218,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.cpmip.pojo.Start" >
     update cpmip_start
-    set start_id = #{startId,jdbcType=INTEGER},
-      construname = #{construname,jdbcType=VARCHAR},
+    set construname = #{construname,jdbcType=VARCHAR},
       position = #{position,jdbcType=VARCHAR},
       area = #{area,jdbcType=VARCHAR},
       type = #{type,jdbcType=VARCHAR},

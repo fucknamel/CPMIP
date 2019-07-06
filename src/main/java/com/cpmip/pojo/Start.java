@@ -1,12 +1,12 @@
 package com.cpmip.pojo;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
 public class Start {
     private Integer id;
-
-    private Integer startId;
 
     private String construname;
 
@@ -18,8 +18,10 @@ public class Start {
 
     private BigDecimal money;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date startTime;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date finalTime;
 
     private String builder;
@@ -34,15 +36,15 @@ public class Start {
 
     private String constructionerPhone;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date submitTime;
 
     private Date createTime;
 
     private Date updateTime;
 
-    public Start(Integer id, Integer startId, String construname, String position, String area, String type, BigDecimal money, Date startTime, Date finalTime, String builder, String buildername, String builderPhone, String construction, String constructioner, String constructionerPhone, Date submitTime, Date createTime, Date updateTime) {
+    public Start(Integer id, String construname, String position, String area, String type, BigDecimal money, Date startTime, Date finalTime, String builder, String buildername, String builderPhone, String construction, String constructioner, String constructionerPhone, Date submitTime, Date createTime, Date updateTime) {
         this.id = id;
-        this.startId = startId;
         this.construname = construname;
         this.position = position;
         this.area = area;
@@ -71,14 +73,6 @@ public class Start {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Integer getStartId() {
-        return startId;
-    }
-
-    public void setStartId(Integer startId) {
-        this.startId = startId;
     }
 
     public String getConstruname() {
