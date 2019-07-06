@@ -6,4 +6,6 @@ import com.cpmip.pojo.Zlsg;
 public interface IZlsgService {
 
     public ServerResponse add(Zlsg item);
+
+    public ServerResponse deleteById(Integer id);
 }
