@@ -4,25 +4,23 @@
   <resultMap id="BaseResultMap" type="com.cpmip.pojo.Zlsg" >
     <constructor >
       <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="zlsg_id" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="construname" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="build" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="construction" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="position" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="build" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="accident" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="happen_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
       <arg column="report_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
       <arg column="money" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
       <arg column="reason" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="actions" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="repons" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
       <arg column="update_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
     </constructor>
   </resultMap>
   <sql id="Base_Column_List" >
-    id, zlsg_id, construname, build, construction, position, build, happen_time, report_time,
-    money, reason, actions, repons, create_time, update_time
+    id, construname, build, construction, position, accident, happen_time, report_time, 
+    money, reason, actions, create_time, update_time
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -35,27 +33,22 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.cpmip.pojo.Zlsg" >
-    insert into cpmip_zlsg (id, zlsg_id, construname, 
-      build, construction, position, 
-      build, happen_time, report_time,
-      money, reason, actions, 
-      repons, create_time, update_time
-      )
-    values (#{id,jdbcType=INTEGER}, #{zlsgId,jdbcType=VARCHAR}, #{construname,jdbcType=VARCHAR}, 
-      #{build,jdbcType=VARCHAR}, #{construction,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, 
-      #{build,jdbcType=VARCHAR}, #{happenTime,jdbcType=TIMESTAMP}, #{reportTime,jdbcType=TIMESTAMP},
-      #{money,jdbcType=DECIMAL}, #{reason,jdbcType=VARCHAR}, #{actions,jdbcType=VARCHAR}, 
-      #{repons,jdbcType=VARCHAR}, now(), now()
-      )
+    insert into cpmip_zlsg (id, construname, build, 
+      construction, position, accident, 
+      happen_time, report_time, money, 
+      reason, actions, create_time, 
+      update_time)
+    values (#{id,jdbcType=INTEGER}, #{construname,jdbcType=VARCHAR}, #{build,jdbcType=VARCHAR}, 
+      #{construction,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, #{accident,jdbcType=VARCHAR}, 
+      #{happenTime,jdbcType=TIMESTAMP}, #{reportTime,jdbcType=TIMESTAMP}, #{money,jdbcType=DECIMAL}, 
+      #{reason,jdbcType=VARCHAR}, #{actions,jdbcType=VARCHAR}, now(),
+      now())
   </insert>
   <insert id="insertSelective" parameterType="com.cpmip.pojo.Zlsg" >
     insert into cpmip_zlsg
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
-      </if>
-      <if test="zlsgId != null" >
-        zlsg_id,
       </if>
       <if test="construname != null" >
         construname,
@@ -69,8 +62,8 @@
       <if test="position != null" >
         position,
       </if>
-      <if test="build != null" >
-        build,
+      <if test="accident != null" >
+        accident,
       </if>
       <if test="happenTime != null" >
         happen_time,
@@ -87,9 +80,6 @@
       <if test="actions != null" >
         actions,
       </if>
-      <if test="repons != null" >
-        repons,
-      </if>
       <if test="createTime != null" >
         create_time,
       </if>
@@ -100,9 +90,6 @@
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
-      </if>
-      <if test="zlsgId != null" >
-        #{zlsgId,jdbcType=VARCHAR},
       </if>
       <if test="construname != null" >
         #{construname,jdbcType=VARCHAR},
@@ -116,8 +103,8 @@
       <if test="position != null" >
         #{position,jdbcType=VARCHAR},
       </if>
-      <if test="build != null" >
-        #{build,jdbcType=VARCHAR},
+      <if test="accident != null" >
+        #{accident,jdbcType=VARCHAR},
       </if>
       <if test="happenTime != null" >
         #{happenTime,jdbcType=TIMESTAMP},
@@ -134,9 +121,6 @@
       <if test="actions != null" >
         #{actions,jdbcType=VARCHAR},
       </if>
-      <if test="repons != null" >
-        #{repons,jdbcType=VARCHAR},
-      </if>
       <if test="createTime != null" >
         now(),
       </if>
@@ -148,9 +132,6 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.cpmip.pojo.Zlsg" >
     update cpmip_zlsg
     <set >
-      <if test="zlsgId != null" >
-        zlsg_id = #{zlsgId,jdbcType=VARCHAR},
-      </if>
       <if test="construname != null" >
         construname = #{construname,jdbcType=VARCHAR},
       </if>
@@ -163,8 +144,8 @@
       <if test="position != null" >
         position = #{position,jdbcType=VARCHAR},
       </if>
-      <if test="build != null" >
-        build = #{build,jdbcType=VARCHAR},
+      <if test="accident != null" >
+        accident = #{accident,jdbcType=VARCHAR},
       </if>
       <if test="happenTime != null" >
         happen_time = #{happenTime,jdbcType=TIMESTAMP},
@@ -181,32 +162,27 @@
       <if test="actions != null" >
         actions = #{actions,jdbcType=VARCHAR},
       </if>
-      <if test="repons != null" >
-        repons = #{repons,jdbcType=VARCHAR},
-      </if>
       <if test="createTime != null" >
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="updateTime != null" >
-        update_time = now()
+        update_time = now(),
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.cpmip.pojo.Zlsg" >
     update cpmip_zlsg
-    set zlsg_id = #{zlsgId,jdbcType=VARCHAR},
-      construname = #{construname,jdbcType=VARCHAR},
+    set construname = #{construname,jdbcType=VARCHAR},
       build = #{build,jdbcType=VARCHAR},
       construction = #{construction,jdbcType=VARCHAR},
       position = #{position,jdbcType=VARCHAR},
-      build = #{build,jdbcType=VARCHAR},
+      accident = #{accident,jdbcType=VARCHAR},
       happen_time = #{happenTime,jdbcType=TIMESTAMP},
       report_time = #{reportTime,jdbcType=TIMESTAMP},
       money = #{money,jdbcType=DECIMAL},
       reason = #{reason,jdbcType=VARCHAR},
       actions = #{actions,jdbcType=VARCHAR},
-      repons = #{repons,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = now()
     where id = #{id,jdbcType=INTEGER}

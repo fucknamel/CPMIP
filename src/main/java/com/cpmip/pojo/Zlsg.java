@@ -1,12 +1,12 @@
 package com.cpmip.pojo;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
 public class Zlsg {
     private Integer id;
-
-    private String zlsgId;
 
     private String construname;
 
@@ -18,8 +18,10 @@ public class Zlsg {
 
     private String accident;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date happenTime;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date reportTime;
 
     private BigDecimal money;
@@ -28,15 +30,12 @@ public class Zlsg {
 
     private String actions;
 
-    private String repons;
-
     private Date createTime;
 
     private Date updateTime;
 
-    public Zlsg(Integer id, String zlsgId, String construname, String build, String construction, String position, String accident, Date happenTime, Date reportTime, BigDecimal money, String reason, String actions, String repons, Date createTime, Date updateTime) {
+    public Zlsg(Integer id, String construname, String build, String construction, String position, String accident, Date happenTime, Date reportTime, BigDecimal money, String reason, String actions, Date createTime, Date updateTime) {
         this.id = id;
-        this.zlsgId = zlsgId;
         this.construname = construname;
         this.build = build;
         this.construction = construction;
@@ -47,7 +46,6 @@ public class Zlsg {
         this.money = money;
         this.reason = reason;
         this.actions = actions;
-        this.repons = repons;
         this.createTime = createTime;
         this.updateTime = updateTime;
     }
@@ -62,14 +60,6 @@ public class Zlsg {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getZlsgId() {
-        return zlsgId;
-    }
-
-    public void setZlsgId(String zlsgId) {
-        this.zlsgId = zlsgId == null ? null : zlsgId.trim();
     }
 
     public String getConstruname() {
@@ -150,14 +140,6 @@ public class Zlsg {
 
     public void setActions(String actions) {
         this.actions = actions == null ? null : actions.trim();
-    }
-
-    public String getRepons() {
-        return repons;
-    }
-
-    public void setRepons(String repons) {
-        this.repons = repons == null ? null : repons.trim();
     }
 
     public Date getCreateTime() {
