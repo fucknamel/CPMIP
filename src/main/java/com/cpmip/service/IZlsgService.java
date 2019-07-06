@@ -8,4 +8,6 @@ public interface IZlsgService {
     public ServerResponse add(Zlsg item);
 
     public ServerResponse deleteById(Integer id);
+
+    public ServerResponse changeById(Zlsg item);
 }
