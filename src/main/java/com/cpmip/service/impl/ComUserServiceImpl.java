@@ -6,6 +6,7 @@ import com.cpmip.dao.ComUserMapper;
 import com.cpmip.pojo.ComUser;
 import com.cpmip.service.IComUserService;
 import com.cpmip.util.MD5Util;
+import com.cpmip.vo.UserVo;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,7 +30,16 @@ public class ComUserServiceImpl implements IComUserService {
         }
 
         user.setPassword(StringUtils.EMPTY);
-        return ServerResponse.createBySuccess("登录成功", user);
+        return ServerResponse.createBySuccess("登录成功", assembleUserVo(user));
+    }
+
+    private UserVo assembleUserVo(ComUser user){
+        UserVo userVo = new UserVo();
+        userVo.setId(user.getId());
+        userVo.setName(user.getName());
+        userVo.setRole(user.getCompany());
+
+        return userVo;
     }
 
     public ServerResponse register(ComUser user){

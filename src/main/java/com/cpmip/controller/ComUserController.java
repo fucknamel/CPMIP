@@ -4,6 +4,7 @@ import com.cpmip.common.Const;
 import com.cpmip.common.ServerResponse;
 import com.cpmip.pojo.ComUser;
 import com.cpmip.service.IComUserService;
+import com.cpmip.vo.UserVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,11 +22,11 @@ public class ComUserController {
 
     @RequestMapping(value = "login.do", method = RequestMethod.POST)
     @ResponseBody
-    public ServerResponse<ComUser> login(String username, String password, HttpSession session){
-        ServerResponse<ComUser> response = iComUserService.login(username, password);
+    public ServerResponse login(String username, String password, HttpSession session){
+        ServerResponse<UserVo> response = iComUserService.login(username, password);
         if (response.isSuccess()) {
             session.setAttribute(Const.CURRENT_USER, response.getData());
-            session.setAttribute(Const.ROLE, Const.Role.ROLE_COM);
+            session.setAttribute(Const.ROLE, response.getData().getRole());
         }
 
         return response;

@@ -11,7 +11,7 @@ public class GovUser {
 
     private String phone;
 
-    private String dept;
+    private Integer dept;
 
     private String post;
 
@@ -25,7 +25,7 @@ public class GovUser {
 
     private Date updateTime;
 
-    public GovUser(Integer id, String jobId, String name, String phone, String dept, String post, String password, String question, String answer, Date createTime, Date updateTime) {
+    public GovUser(Integer id, String jobId, String name, String phone, Integer dept, String post, String password, String question, String answer, Date createTime, Date updateTime) {
         this.id = id;
         this.jobId = jobId;
         this.name = name;
@@ -75,12 +75,12 @@ public class GovUser {
         this.phone = phone == null ? null : phone.trim();
     }
 
-    public String getDept() {
+    public Integer getDept() {
         return dept;
     }
 
-    public void setDept(String dept) {
-        this.dept = dept == null ? null : dept.trim();
+    public void setDept(Integer dept) {
+        this.dept = dept;
     }
 
     public String getPost() {

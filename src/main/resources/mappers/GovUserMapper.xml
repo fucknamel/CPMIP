@@ -7,7 +7,7 @@
       <arg column="job_id" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="name" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="phone" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="dept" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="dept" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="post" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="password" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="question" jdbcType="VARCHAR" javaType="java.lang.String" />
@@ -37,7 +37,7 @@
       answer, create_time, update_time
       )
     values (#{id,jdbcType=INTEGER}, #{jobId,jdbcType=VARCHAR},
-      #{name,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{dept,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{dept,jdbcType=INTEGER},
       #{post,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{question,jdbcType=VARCHAR}, 
       #{answer,jdbcType=VARCHAR}, now(), now()
       )
@@ -93,7 +93,7 @@
         #{phone,jdbcType=VARCHAR},
       </if>
       <if test="dept != null" >
-        #{dept,jdbcType=VARCHAR},
+        #{dept,jdbcType=INTEGER},
       </if>
       <if test="post != null" >
         #{post,jdbcType=VARCHAR},
@@ -128,7 +128,7 @@
         phone = #{phone,jdbcType=VARCHAR},
       </if>
       <if test="dept != null" >
-        dept = #{dept,jdbcType=VARCHAR},
+        dept = #{dept,jdbcType=INTEGER},
       </if>
       <if test="post != null" >
         post = #{post,jdbcType=VARCHAR},
@@ -156,7 +156,7 @@
     set job_id = #{jobId,jdbcType=VARCHAR},
       name = #{name,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR},
-      dept = #{dept,jdbcType=VARCHAR},
+      dept = #{dept,jdbcType=INTEGER},
       post = #{post,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
       question = #{question,jdbcType=VARCHAR},

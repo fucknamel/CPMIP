@@ -21,7 +21,9 @@ public class Const {
     }
 
     public interface Role{
-        int ROLE_COM = 0;
-        int ROLE_GOV = 1;
+        int ROLE_COM_JS = 0;
+        int ROLE_COM_SG = 1;
+        int ROLE_GOV_JG = 2;
+        int ROLE_GOV_ZJ = 3;
     }
 }
