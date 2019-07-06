@@ -8,4 +8,6 @@ public interface IStartService {
     public ServerResponse add(Start item);
 
     public ServerResponse deleteById(Integer id);
+
+    public ServerResponse changeById(Start item);
 }
