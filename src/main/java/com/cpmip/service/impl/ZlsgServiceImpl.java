@@ -85,7 +85,7 @@ public class ZlsgServiceImpl implements IZlsgService {
         zlsgListVo.setPosition(item.getPosition());
         zlsgListVo.setBuild(item.getBuild());
         zlsgListVo.setConstruction(item.getConstruction());
-        zlsgListVo.setReportTime(item.getReportTime());
+        zlsgListVo.setReportTime(DateTimeUtil.dateToStr(item.getReportTime()));
 
         return zlsgListVo;
     }

@@ -9,7 +9,7 @@ public class ZlsgListVo {
     String position;
     String build;
     String construction;
-    Date reportTime;
+    String reportTime;
 
     public int getId() {
         return id;
@@ -51,11 +51,11 @@ public class ZlsgListVo {
         this.construction = construction;
     }
 
-    public Date getReportTime() {
+    public String getReportTime() {
         return reportTime;
     }
 
-    public void setReportTime(Date reportTime) {
+    public void setReportTime(String reportTime) {
         this.reportTime = reportTime;
     }
 }
