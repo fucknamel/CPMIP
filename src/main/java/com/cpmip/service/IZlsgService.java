@@ -10,4 +10,6 @@ public interface IZlsgService {
     public ServerResponse deleteById(Integer id);
 
     public ServerResponse changeById(Zlsg item);
+
+    public ServerResponse getListByTime(String beginTime, String endTime, int pageNum, int pageSize, String orderBy);
 }

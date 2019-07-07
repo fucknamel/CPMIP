@@ -187,4 +187,14 @@
       update_time = now()
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="selectListByTime" resultMap="BaseResultMap" parameterType="map">
+    select
+    <include refid="Base_Column_List"/>
+    from cpmip_zlsg
+    <where>
+      <if test="beginDate != null and endDate != null">
+        report_time between #{beginDate} and #{endDate}
+      </if>
+    </where>
+  </select>
 </mapper>

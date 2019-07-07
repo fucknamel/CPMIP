@@ -16,8 +16,8 @@ public class Const {
 
     public static final String ROLE = "role";
 
-    public interface ProductListOrderBy{
-        Set<String> PRICE_ASC_DESC = Sets.newHashSet("price_desc", "price_asc");
+    public interface ZlsgOrderBy{
+        Set<String> REPORT_TIME_ASC_DESC = Sets.newHashSet("report_time_desc", "report_time_asc");
     }
 
     public interface Role{

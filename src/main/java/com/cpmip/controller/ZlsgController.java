@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
@@ -44,5 +45,15 @@ public class ZlsgController {
             return iZlsgService.changeById(item);
         }
         return ServerResponse.createByErrorMessage("用户未登录");
+    }
+
+    @RequestMapping(value = "get_time_list", method = RequestMethod.POST)
+    @ResponseBody
+    public ServerResponse getListByTime(@RequestParam(value = "beginTime", required = false) String beginTime,
+                                        @RequestParam(value = "endTime", required = false) String endTime,
+                                        @RequestParam(value = "pageNum", defaultValue = "1") int pageNum,
+                                        @RequestParam(value = "pageSize", defaultValue = "10") int pageSize,
+                                        @RequestParam(value = "orderBy", defaultValue = "") String orderBy){
+        return iZlsgService.getListByTime(beginTime, endTime, pageNum, pageSize, orderBy);
     }
 }
