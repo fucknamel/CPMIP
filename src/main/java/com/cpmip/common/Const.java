@@ -20,6 +20,10 @@ public class Const {
         Set<String> REPORT_TIME_ASC_DESC = Sets.newHashSet("report_time_desc", "report_time_asc");
     }
 
+    public interface AqsgOrderBy{
+        Set<String> REPORT_TIME_ASC_DESC = Sets.newHashSet("report_time_desc", "report_time_asc");
+    }
+
     public interface Role{
         int ROLE_COM_JS = 0;
         int ROLE_COM_SG = 1;

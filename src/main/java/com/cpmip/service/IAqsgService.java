@@ -10,4 +10,6 @@ public interface IAqsgService {
     public ServerResponse deleteById(Integer id);
 
     public ServerResponse changeById(Aqsg item);
+
+    public ServerResponse getListByTime(String beginTime, String endTime, int pageNum, int pageSize, String orderBy);
 }
