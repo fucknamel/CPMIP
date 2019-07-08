@@ -4,7 +4,6 @@
   <resultMap id="BaseResultMap" type="com.cpmip.pojo.Report" >
     <constructor >
       <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="report_id" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="construname" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="position" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="money" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
@@ -18,7 +17,7 @@
       <arg column="constructioner_phone" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="qsadname" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="qsader" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="qsader_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="qsader_phone" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="standard1" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="standard2" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="standard3" jdbcType="VARCHAR" javaType="java.lang.String" />
@@ -27,9 +26,9 @@
     </constructor>
   </resultMap>
   <sql id="Base_Column_List" >
-    id, report_id, construname, position, money, area, report_time, buildname, builder, 
-    builder_phone, construction, constructioner, constructioner_phone, qsadname, qsader, 
-    qsader_name, standard1, standard2, standard3, create_time, update_time
+    id, construname, position, money, area, report_time, buildname, builder, builder_phone, 
+    construction, constructioner, constructioner_phone, qsadname, qsader, qsader_phone, 
+    standard1, standard2, standard3, create_time, update_time
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -42,31 +41,26 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.cpmip.pojo.Report" >
-    insert into cpmip_report (id, report_id, construname, 
-      position, money, area, 
-      report_time, buildname, builder, 
-      builder_phone, construction, constructioner, 
-      constructioner_phone, qsadname, qsader, 
-      qsader_name, standard1, standard2, 
-      standard3, create_time, update_time
-      )
-    values (#{id,jdbcType=INTEGER}, #{reportId,jdbcType=VARCHAR}, #{construname,jdbcType=VARCHAR}, 
-      #{position,jdbcType=VARCHAR}, #{money,jdbcType=DECIMAL}, #{area,jdbcType=VARCHAR}, 
-      #{reportTime,jdbcType=TIMESTAMP}, #{buildname,jdbcType=VARCHAR}, #{builder,jdbcType=VARCHAR}, 
-      #{builderPhone,jdbcType=VARCHAR}, #{construction,jdbcType=VARCHAR}, #{constructioner,jdbcType=VARCHAR}, 
-      #{constructionerPhone,jdbcType=VARCHAR}, #{qsadname,jdbcType=VARCHAR}, #{qsader,jdbcType=VARCHAR}, 
-      #{qsaderName,jdbcType=VARCHAR}, #{standard1,jdbcType=VARCHAR}, #{standard2,jdbcType=VARCHAR}, 
-      #{standard3,jdbcType=VARCHAR}, now(), now()
-      )
+    insert into cpmip_report (id, construname, position, 
+      money, area, report_time, 
+      buildname, builder, builder_phone, 
+      construction, constructioner, constructioner_phone, 
+      qsadname, qsader, qsader_phone, 
+      standard1, standard2, standard3, 
+      create_time, update_time)
+    values (#{id,jdbcType=INTEGER}, #{construname,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, 
+      #{money,jdbcType=DECIMAL}, #{area,jdbcType=VARCHAR}, #{reportTime,jdbcType=TIMESTAMP}, 
+      #{buildname,jdbcType=VARCHAR}, #{builder,jdbcType=VARCHAR}, #{builderPhone,jdbcType=VARCHAR}, 
+      #{construction,jdbcType=VARCHAR}, #{constructioner,jdbcType=VARCHAR}, #{constructionerPhone,jdbcType=VARCHAR}, 
+      #{qsadname,jdbcType=VARCHAR}, #{qsader,jdbcType=VARCHAR}, #{qsaderPhone,jdbcType=VARCHAR}, 
+      #{standard1,jdbcType=VARCHAR}, #{standard2,jdbcType=VARCHAR}, #{standard3,jdbcType=VARCHAR}, 
+      now(), now())
   </insert>
   <insert id="insertSelective" parameterType="com.cpmip.pojo.Report" >
     insert into cpmip_report
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
-      </if>
-      <if test="reportId != null" >
-        report_id,
       </if>
       <if test="construname != null" >
         construname,
@@ -107,8 +101,8 @@
       <if test="qsader != null" >
         qsader,
       </if>
-      <if test="qsaderName != null" >
-        qsader_name,
+      <if test="qsaderPhone != null" >
+        qsader_phone,
       </if>
       <if test="standard1 != null" >
         standard1,
@@ -129,9 +123,6 @@
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
-      </if>
-      <if test="reportId != null" >
-        #{reportId,jdbcType=VARCHAR},
       </if>
       <if test="construname != null" >
         #{construname,jdbcType=VARCHAR},
@@ -172,8 +163,8 @@
       <if test="qsader != null" >
         #{qsader,jdbcType=VARCHAR},
       </if>
-      <if test="qsaderName != null" >
-        #{qsaderName,jdbcType=VARCHAR},
+      <if test="qsaderPhone != null" >
+        #{qsaderPhone,jdbcType=VARCHAR},
       </if>
       <if test="standard1 != null" >
         #{standard1,jdbcType=VARCHAR},
@@ -195,9 +186,6 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.cpmip.pojo.Report" >
     update cpmip_report
     <set >
-      <if test="reportId != null" >
-        report_id = #{reportId,jdbcType=VARCHAR},
-      </if>
       <if test="construname != null" >
         construname = #{construname,jdbcType=VARCHAR},
       </if>
@@ -237,8 +225,8 @@
       <if test="qsader != null" >
         qsader = #{qsader,jdbcType=VARCHAR},
       </if>
-      <if test="qsaderName != null" >
-        qsader_name = #{qsaderName,jdbcType=VARCHAR},
+      <if test="qsaderPhone != null" >
+        qsader_phone = #{qsaderPhone,jdbcType=VARCHAR},
       </if>
       <if test="standard1 != null" >
         standard1 = #{standard1,jdbcType=VARCHAR},
@@ -260,8 +248,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.cpmip.pojo.Report" >
     update cpmip_report
-    set report_id = #{reportId,jdbcType=VARCHAR},
-      construname = #{construname,jdbcType=VARCHAR},
+    set construname = #{construname,jdbcType=VARCHAR},
       position = #{position,jdbcType=VARCHAR},
       money = #{money,jdbcType=DECIMAL},
       area = #{area,jdbcType=VARCHAR},
@@ -274,7 +261,7 @@
       constructioner_phone = #{constructionerPhone,jdbcType=VARCHAR},
       qsadname = #{qsadname,jdbcType=VARCHAR},
       qsader = #{qsader,jdbcType=VARCHAR},
-      qsader_name = #{qsaderName,jdbcType=VARCHAR},
+      qsader_phone = #{qsaderPhone,jdbcType=VARCHAR},
       standard1 = #{standard1,jdbcType=VARCHAR},
       standard2 = #{standard2,jdbcType=VARCHAR},
       standard3 = #{standard3,jdbcType=VARCHAR},

@@ -1,12 +1,12 @@
 package com.cpmip.pojo;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
 public class Report {
     private Integer id;
-
-    private String reportId;
 
     private String construname;
 
@@ -16,6 +16,7 @@ public class Report {
 
     private String area;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date reportTime;
 
     private String buildname;
@@ -34,7 +35,7 @@ public class Report {
 
     private String qsader;
 
-    private String qsaderName;
+    private String qsaderPhone;
 
     private String standard1;
 
@@ -46,9 +47,8 @@ public class Report {
 
     private Date updateTime;
 
-    public Report(Integer id, String reportId, String construname, String position, BigDecimal money, String area, Date reportTime, String buildname, String builder, String builderPhone, String construction, String constructioner, String constructionerPhone, String qsadname, String qsader, String qsaderName, String standard1, String standard2, String standard3, Date createTime, Date updateTime) {
+    public Report(Integer id, String construname, String position, BigDecimal money, String area, Date reportTime, String buildname, String builder, String builderPhone, String construction, String constructioner, String constructionerPhone, String qsadname, String qsader, String qsaderPhone, String standard1, String standard2, String standard3, Date createTime, Date updateTime) {
         this.id = id;
-        this.reportId = reportId;
         this.construname = construname;
         this.position = position;
         this.money = money;
@@ -62,7 +62,7 @@ public class Report {
         this.constructionerPhone = constructionerPhone;
         this.qsadname = qsadname;
         this.qsader = qsader;
-        this.qsaderName = qsaderName;
+        this.qsaderPhone = qsaderPhone;
         this.standard1 = standard1;
         this.standard2 = standard2;
         this.standard3 = standard3;
@@ -80,14 +80,6 @@ public class Report {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getReportId() {
-        return reportId;
-    }
-
-    public void setReportId(String reportId) {
-        this.reportId = reportId == null ? null : reportId.trim();
     }
 
     public String getConstruname() {
@@ -194,12 +186,12 @@ public class Report {
         this.qsader = qsader == null ? null : qsader.trim();
     }
 
-    public String getQsaderName() {
-        return qsaderName;
+    public String getQsaderPhone() {
+        return qsaderPhone;
     }
 
-    public void setQsaderName(String qsaderName) {
-        this.qsaderName = qsaderName == null ? null : qsaderName.trim();
+    public void setQsaderPhone(String qsaderPhone) {
+        this.qsaderPhone = qsaderPhone == null ? null : qsaderPhone.trim();
     }
 
     public String getStandard1() {
