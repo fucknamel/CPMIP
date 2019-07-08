@@ -8,4 +8,6 @@ public interface IReportService {
     public ServerResponse add(Report item);
 
     public ServerResponse deleteById(Integer id);
+
+    public ServerResponse changeById(Report item);
 }
