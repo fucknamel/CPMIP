@@ -20,4 +20,12 @@ public class FinalServiceImpl implements IFinalService {
         }
         return ServerResponse.createBySuccessMessage("添加成功");
     }
+
+    public ServerResponse deleteById(Integer id){
+        int resultCount = finalMapper.deleteByPrimaryKey(id);
+        if (resultCount == 0) {
+            return ServerResponse.createByErrorMessage("删除失败");
+        }
+        return ServerResponse.createBySuccessMessage("删除成功");
+    }
 }

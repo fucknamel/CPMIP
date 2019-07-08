@@ -6,4 +6,6 @@ import com.cpmip.pojo.Final;
 public interface IFinalService {
 
     public ServerResponse add(Final item);
+
+    public ServerResponse deleteById(Integer id);
 }
