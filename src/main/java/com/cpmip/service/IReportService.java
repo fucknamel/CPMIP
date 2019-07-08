@@ -6,4 +6,6 @@ import com.cpmip.pojo.Report;
 public interface IReportService {
 
     public ServerResponse add(Report item);
+
+    public ServerResponse deleteById(Integer id);
 }
