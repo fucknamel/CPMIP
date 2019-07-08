@@ -1,5 +1,7 @@
 package com.cpmip.pojo;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class News {
@@ -11,6 +13,7 @@ public class News {
 
     private String operator;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date publishTime;
 
     private Date createTime;
