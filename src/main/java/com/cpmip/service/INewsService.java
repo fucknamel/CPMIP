@@ -8,4 +8,6 @@ public interface INewsService {
     public ServerResponse add(News item);
 
     public ServerResponse deleteById(Integer id);
+
+    public ServerResponse changeById(News item);
 }
