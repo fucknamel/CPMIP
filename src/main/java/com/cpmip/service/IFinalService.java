@@ -8,4 +8,6 @@ public interface IFinalService {
     public ServerResponse add(Final item);
 
     public ServerResponse deleteById(Integer id);
+
+    public ServerResponse changeById(Final item);
 }
