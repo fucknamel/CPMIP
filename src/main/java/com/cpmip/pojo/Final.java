@@ -1,12 +1,12 @@
 package com.cpmip.pojo;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
 public class Final {
     private Integer id;
-
-    private Integer finalId;
 
     private String construname;
 
@@ -20,8 +20,10 @@ public class Final {
 
     private String startid;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date startTime;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date finalTime;
 
     private String build;
@@ -36,15 +38,15 @@ public class Final {
 
     private String qsadopinion;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date submitTime;
 
     private Date createTime;
 
     private Date updateTime;
 
-    public Final(Integer id, Integer finalId, String construname, String position, String area, String type, BigDecimal money, String startid, Date startTime, Date finalTime, String build, String buildopinion, String construction, String constructionopinion, String qsadname, String qsadopinion, Date submitTime, Date createTime, Date updateTime) {
+    public Final(Integer id, String construname, String position, String area, String type, BigDecimal money, String startid, Date startTime, Date finalTime, String build, String buildopinion, String construction, String constructionopinion, String qsadname, String qsadopinion, Date submitTime, Date createTime, Date updateTime) {
         this.id = id;
-        this.finalId = finalId;
         this.construname = construname;
         this.position = position;
         this.area = area;
@@ -74,14 +76,6 @@ public class Final {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Integer getFinalId() {
-        return finalId;
-    }
-
-    public void setFinalId(Integer finalId) {
-        this.finalId = finalId;
     }
 
     public String getConstruname() {
