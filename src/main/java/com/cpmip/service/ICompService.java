@@ -8,4 +8,6 @@ public interface ICompService {
     public ServerResponse add(Complaints item);
 
     public ServerResponse deleteById(Integer id);
+
+    public ServerResponse changeById(Complaints item);
 }
