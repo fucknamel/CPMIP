@@ -1,22 +1,23 @@
 package com.cpmip.pojo;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class Complaints {
     private Integer id;
 
-    private String complaintsId;
-
     private String construname;
 
-    private String position;
-
-    private String buildname;
+    private String build;
 
     private String construction;
 
+    private String position;
+
     private String reason;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date complaintsTime;
 
     private String feedback;
@@ -33,13 +34,12 @@ public class Complaints {
 
     private Date updateTime;
 
-    public Complaints(Integer id, String complaintsId, String construname, String position, String buildname, String construction, String reason, Date complaintsTime, String feedback, String record, Integer deal, Integer examine, Integer down, Date createTime, Date updateTime) {
+    public Complaints(Integer id, String construname, String build, String construction, String position, String reason, Date complaintsTime, String feedback, String record, Integer deal, Integer examine, Integer down, Date createTime, Date updateTime) {
         this.id = id;
-        this.complaintsId = complaintsId;
         this.construname = construname;
-        this.position = position;
-        this.buildname = buildname;
+        this.build = build;
         this.construction = construction;
+        this.position = position;
         this.reason = reason;
         this.complaintsTime = complaintsTime;
         this.feedback = feedback;
@@ -63,14 +63,6 @@ public class Complaints {
         this.id = id;
     }
 
-    public String getComplaintsId() {
-        return complaintsId;
-    }
-
-    public void setComplaintsId(String complaintsId) {
-        this.complaintsId = complaintsId == null ? null : complaintsId.trim();
-    }
-
     public String getConstruname() {
         return construname;
     }
@@ -79,20 +71,12 @@ public class Complaints {
         this.construname = construname == null ? null : construname.trim();
     }
 
-    public String getPosition() {
-        return position;
+    public String getBuild() {
+        return build;
     }
 
-    public void setPosition(String position) {
-        this.position = position == null ? null : position.trim();
-    }
-
-    public String getBuildname() {
-        return buildname;
-    }
-
-    public void setBuildname(String buildname) {
-        this.buildname = buildname == null ? null : buildname.trim();
+    public void setBuild(String build) {
+        this.build = build == null ? null : build.trim();
     }
 
     public String getConstruction() {
@@ -101,6 +85,14 @@ public class Complaints {
 
     public void setConstruction(String construction) {
         this.construction = construction == null ? null : construction.trim();
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position == null ? null : position.trim();
     }
 
     public String getReason() {
