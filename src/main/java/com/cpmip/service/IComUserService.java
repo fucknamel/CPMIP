@@ -5,9 +5,11 @@ import com.cpmip.pojo.ComUser;
 
 public interface IComUserService {
 
-    ServerResponse login(String username, String password);
+    public ServerResponse login(String username, String password);
 
-    ServerResponse register(ComUser user);
+    public ServerResponse register(ComUser user);
 
-    ServerResponse<String> checkValid(String str, String type);
+    public ServerResponse<String> checkValid(String str, String type);
+
+    public ServerResponse getUserInfo(Integer id);
 }

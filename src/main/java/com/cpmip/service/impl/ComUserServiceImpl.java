@@ -82,4 +82,14 @@ public class ComUserServiceImpl implements IComUserService {
         }
         return ServerResponse.createBySuccessMessage("校验成功");
     }
+
+    public ServerResponse getUserInfo(Integer id){
+         ComUser user = comUserMapper.selectByPrimaryKey(id);
+         if (user == null){
+             return ServerResponse.createByErrorMessage("无此用户，参数错误");
+         }
+         user.setPassword(StringUtils.EMPTY);
+
+         return ServerResponse.createBySuccess(user);
+    }
 }

@@ -9,5 +9,7 @@ public interface IGovUserService {
 
     public ServerResponse register(GovUser user);
 
-    ServerResponse<String> checkValid(String str, String type);
+    public ServerResponse<String> checkValid(String str, String type);
+
+    public ServerResponse getUserInfo(Integer id);
 }

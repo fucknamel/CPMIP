@@ -71,4 +71,14 @@ public class GovUserServiceImpl implements IGovUserService {
         }
         return ServerResponse.createBySuccessMessage("校验成功");
     }
+
+    public ServerResponse getUserInfo(Integer id){
+         GovUser user = govUserMapper.selectByPrimaryKey(id);
+         if (user == null){
+             return ServerResponse.createByErrorMessage("无此用户，参数错误");
+         }
+         user.setPassword(StringUtils.EMPTY);
+
+         return ServerResponse.createBySuccess(user);
+    }
 }

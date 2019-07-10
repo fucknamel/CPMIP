@@ -56,9 +56,11 @@ public class ComUserController {
     @ResponseBody
     public ServerResponse getUserInfo(HttpSession session) {
         UserVo user = (UserVo) session.getAttribute(Const.CURRENT_USER);
-        if (user != null) {
-            return ServerResponse.createBySuccess(user);
+        if (user == null) {
+            return ServerResponse.createByErrorMessage("用户未登录，无法获取当前用户信息");
+        } else if ((int)session.getAttribute(Const.ROLE) != 0 && (int)session.getAttribute(Const.ROLE) != 1) {
+            return ServerResponse.createByErrorMessage("登陆用户ROLE错误");
         }
-        return ServerResponse.createByErrorMessage("用户未登录，无法获取当前用户信息");
+        return iComUserService.getUserInfo(user.getId());
     }
 }
