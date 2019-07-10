@@ -47,7 +47,7 @@ public class ZlsgController {
         return ServerResponse.createByErrorMessage("用户未登录");
     }
 
-    @RequestMapping(value = "get_time_list", method = RequestMethod.POST)
+    @RequestMapping(value = "get_time_list.do", method = RequestMethod.POST)
     @ResponseBody
     public ServerResponse getListByTime(@RequestParam(value = "beginTime", required = false) String beginTime,
                                         @RequestParam(value = "endTime", required = false) String endTime,

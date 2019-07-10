@@ -10,4 +10,6 @@ public interface IReportService {
     public ServerResponse deleteById(Integer id);
 
     public ServerResponse changeById(Report item);
+
+    public ServerResponse getList(int pageNum, int pageSize);
 }

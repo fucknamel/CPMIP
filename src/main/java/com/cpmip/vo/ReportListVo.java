@@ -1,15 +1,12 @@
 package com.cpmip.vo;
 
-import java.util.Date;
-
-public class ZlsgListVo {
+public class ReportListVo {
 
     private int id;
     private String construname;
     private String position;
-    private String build;
+    private String buildname;
     private String construction;
-    private String reportTime;
 
     public int getId() {
         return id;
@@ -35,12 +32,12 @@ public class ZlsgListVo {
         this.position = position;
     }
 
-    public String getBuild() {
-        return build;
+    public String getBuildname() {
+        return buildname;
     }
 
-    public void setBuild(String build) {
-        this.build = build;
+    public void setBuildname(String buildname) {
+        this.buildname = buildname;
     }
 
     public String getConstruction() {
@@ -49,13 +46,5 @@ public class ZlsgListVo {
 
     public void setConstruction(String construction) {
         this.construction = construction;
-    }
-
-    public String getReportTime() {
-        return reportTime;
-    }
-
-    public void setReportTime(String reportTime) {
-        this.reportTime = reportTime;
     }
 }

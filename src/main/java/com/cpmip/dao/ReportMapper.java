@@ -1,6 +1,10 @@
 package com.cpmip.dao;
 
 import com.cpmip.pojo.Report;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.Date;
+import java.util.List;
 
 public interface ReportMapper {
     int deleteByPrimaryKey(Integer id);
@@ -14,4 +18,6 @@ public interface ReportMapper {
     int updateByPrimaryKeySelective(Report record);
 
     int updateByPrimaryKey(Report record);
+
+    List<Report> selectList();
 }

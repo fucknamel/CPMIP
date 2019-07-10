@@ -2,12 +2,12 @@ package com.cpmip.vo;
 
 public class AqsgListVo {
 
-    int id;
-    String construname;
-    String construction;
-    String build;
-    String position;
-    String reportTime;
+    private int id;
+    private String construname;
+    private String construction;
+    private String build;
+    private String position;
+    private String reportTime;
 
     public int getId() {
         return id;
