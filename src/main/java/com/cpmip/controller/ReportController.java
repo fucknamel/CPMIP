@@ -53,4 +53,10 @@ public class ReportController {
                                         @RequestParam(value = "pageSize", defaultValue = "10") int pageSize){
         return iReportService.getList(pageNum, pageSize);
     }
+
+    @RequestMapping(value = "get_detail.do", method = RequestMethod.POST)
+    @ResponseBody
+    public ServerResponse getDetail(Integer reportId){
+        return iReportService.getReportDetail(reportId);
+    }
 }

@@ -12,4 +12,6 @@ public interface IReportService {
     public ServerResponse changeById(Report item);
 
     public ServerResponse getList(int pageNum, int pageSize);
+
+    public ServerResponse getReportDetail(Integer reportId);
 }
