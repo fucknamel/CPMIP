@@ -2,6 +2,8 @@ package com.cpmip.dao;
 
 import com.cpmip.pojo.News;
 
+import java.util.List;
+
 public interface NewsMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -14,4 +16,6 @@ public interface NewsMapper {
     int updateByPrimaryKeySelective(News record);
 
     int updateByPrimaryKey(News record);
+
+    List<News> selectList();
 }

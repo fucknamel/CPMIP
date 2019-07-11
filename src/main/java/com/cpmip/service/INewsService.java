@@ -10,4 +10,6 @@ public interface INewsService {
     public ServerResponse deleteById(Integer id);
 
     public ServerResponse changeById(News item);
+
+    public ServerResponse getList(int pageNum, int pageSize);
 }

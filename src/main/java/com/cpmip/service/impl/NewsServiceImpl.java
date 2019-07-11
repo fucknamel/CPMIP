@@ -4,8 +4,15 @@ import com.cpmip.common.ServerResponse;
 import com.cpmip.dao.NewsMapper;
 import com.cpmip.pojo.News;
 import com.cpmip.service.INewsService;
+import com.cpmip.util.DateTimeUtil;
+import com.cpmip.vo.NewsListVo;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service("iNewsService")
 public class NewsServiceImpl implements INewsService {
@@ -35,5 +42,30 @@ public class NewsServiceImpl implements INewsService {
             return ServerResponse.createByErrorMessage("修改失败");
         }
         return ServerResponse.createBySuccessMessage("修改成功");
+    }
+
+    public ServerResponse getList(int pageNum, int pageSize){
+        PageHelper.startPage(pageNum, pageSize);
+        List<News> newsList = newsMapper.selectList();
+
+        List<NewsListVo> newsListVoList = Lists.newArrayList();
+        for (News news : newsList){
+            NewsListVo newsListVo = assembleNewsListVo(news);
+            newsListVoList.add(newsListVo);
+        }
+        PageInfo pageResult = new PageInfo(newsList);
+        pageResult.setList(newsListVoList);
+
+        return ServerResponse.createBySuccess(pageResult);
+    }
+
+    private NewsListVo assembleNewsListVo(News news){
+        NewsListVo newsListVo = new NewsListVo();
+        newsListVo.setId(news.getId());
+        newsListVo.setTitle(news.getTitle());
+        newsListVo.setOperator(news.getOperator());
+        newsListVo.setPublishTime(DateTimeUtil.dateToStr(news.getCreateTime()));
+
+        return newsListVo;
     }
 }
