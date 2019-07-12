@@ -10,4 +10,6 @@ public interface ICompService {
     public ServerResponse deleteById(Integer id);
 
     public ServerResponse changeById(Complaints item);
+
+    public ServerResponse getList(int pageNum, int pageSize);
 }

@@ -2,6 +2,8 @@ package com.cpmip.dao;
 
 import com.cpmip.pojo.Complaints;
 
+import java.util.List;
+
 public interface ComplaintsMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -14,4 +16,6 @@ public interface ComplaintsMapper {
     int updateByPrimaryKeySelective(Complaints record);
 
     int updateByPrimaryKey(Complaints record);
+
+    List<Complaints> selectList();
 }
