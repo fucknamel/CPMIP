@@ -2,6 +2,8 @@ package com.cpmip.dao;
 
 import com.cpmip.pojo.Start;
 
+import java.util.List;
+
 public interface StartMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -14,4 +16,6 @@ public interface StartMapper {
     int updateByPrimaryKeySelective(Start record);
 
     int updateByPrimaryKey(Start record);
+
+    List<Start> selectList();
 }

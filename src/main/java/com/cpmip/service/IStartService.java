@@ -10,4 +10,6 @@ public interface IStartService {
     public ServerResponse deleteById(Integer id);
 
     public ServerResponse changeById(Start item);
+
+    public ServerResponse getList(int pageNum, int pageSize);
 }
