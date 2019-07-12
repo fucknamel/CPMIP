@@ -10,4 +10,6 @@ public interface IFinalService {
     public ServerResponse deleteById(Integer id);
 
     public ServerResponse changeById(Final item);
+
+    public ServerResponse getList(int pageNum, int pageSize);
 }

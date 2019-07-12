@@ -2,6 +2,8 @@ package com.cpmip.dao;
 
 import com.cpmip.pojo.Final;
 
+import java.util.List;
+
 public interface FinalMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -14,4 +16,6 @@ public interface FinalMapper {
     int updateByPrimaryKeySelective(Final record);
 
     int updateByPrimaryKey(Final record);
+
+    List<Final> selectList();
 }

@@ -46,14 +46,14 @@ public class StartServiceImpl implements IStartService {
 
     public ServerResponse getList(int pageNum, int pageSize){
         PageHelper.startPage(pageNum, pageSize);
-        List<Start> starts = startMapper.selectList();
+        List<Start> startList = startMapper.selectList();
 
         List<StartListVo> startListVoList = Lists.newArrayList();
-        for (Start start : starts){
+        for (Start start : startList){
             StartListVo startListVo = assembleStartListVo(start);
             startListVoList.add(startListVo);
         }
-        PageInfo pageResult = new PageInfo(starts);
+        PageInfo pageResult = new PageInfo(startList);
         pageResult.setList(startListVoList);
 
         return ServerResponse.createBySuccess(pageResult);
